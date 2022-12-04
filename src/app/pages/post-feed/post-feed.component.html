@@ -1,0 +1,28 @@
+<main id="main" class="main">
+
+   <div class="card">
+      <div class="card-image">
+        <figure class="image">
+         <img src="https://assets.worshipartistry.com/sites/default/files/imagecache/bloghero/greenroom-main/Blog%20Header%202%20(34).jpg"  alt="...">
+        </figure>
+      </div>
+
+   </div>
+
+  <section class="section">
+   <div class="columns">
+        <div class="column">
+           <div class="card" *ngFor = "let post of posts">
+              <div class="card-body">
+                 <h5 class="card-title"> {{post.title}}</h5>
+                 <p>{{post.text}}</p>
+              </div>
+           </div>
+        </div>
+   </div>
+        
+    
+     
+  </section>
+ 
+</main>

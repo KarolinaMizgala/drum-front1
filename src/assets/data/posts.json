@@ -1,0 +1,5 @@
+[
+      {"id": 1, "title": "Post 1", "text": "treść pierwszego posta"},
+      {"id": 2, "title": "Post 2", "text": "treść drugiego posta"},
+      {"id": 3, "title": "Post 3", "text": "treść trzeciego posta"}
+    ]
