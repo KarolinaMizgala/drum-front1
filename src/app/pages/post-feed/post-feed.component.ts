@@ -17,5 +17,6 @@ export class PostFeedComponent implements OnInit{
   ngOnInit(): void {
     this._postService.getPosts().subscribe(data =>this.posts=data);
   }
-
+  
 }
+

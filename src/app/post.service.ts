@@ -9,12 +9,13 @@ import { IPost } from './post';
 })
 export class PostService {
 
-private _url: string="/assets/data/posts.json"
+  private _url: string = "/assets/data/posts.json"
 
   constructor(private http: HttpClient) { }
 
-  public getPosts(): Observable<IPost[]>{
-   
+  public getPosts(): Observable<IPost[]> {
+
     return this.http.get<IPost[]>(this._url);
   }
+
 }
