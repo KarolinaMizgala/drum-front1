@@ -2,7 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\post-feed",
+    "\\src\\assets",
+    "\\src\\assets\\data"
   ],
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }

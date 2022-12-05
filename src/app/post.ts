@@ -8,3 +8,4 @@ export interface IPost {
   attachment: string,
   author:string 
 }
+///
