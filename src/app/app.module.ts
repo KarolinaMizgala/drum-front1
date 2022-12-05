@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,12 +40,8 @@ import { SignupComponent } from './pages/signup/signup.component';
     AppRoutingModule, 
     BrowserAnimationsModule,
     HttpClientModule, 
-    MatSidenavModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule,
-    MatDividerModule,
-    MatListModule,
+    ReactiveFormsModule
+
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

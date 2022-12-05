@@ -10,28 +10,35 @@
   </div>
 
   <section class="section">
-    <div class="card">
-      <div class="card-body">
-        <div class="field">
-          <label for="" class="label">Utwórz post</label>
-          <p class="control">
-            <textarea class="textarea" placeholder="Dodaj tytuł" rows="1"></textarea>
-          </p>
-          <br />
-          <p class="control">
-            <textarea class="textarea" placeholder="Dodaj treść"></textarea>
-          </p>
-          <br />
-          <nav class="level">
-            <div class="level-right">
-              <div class="level-item">
-                <a class="button is-info">Dodaj</a>
-              </div>
-            </div>
-            </nav>
+   
+      <div class="card">
+        <div class="card-body">
+          <div class="field">
+            <label for="" class="label">Utwórz post</label>
+           
+              <form [formGroup]="postForm" (ngSubmit)="createPost()">
+              <p class="control">
+                <input formControlName="title" type="text" class="form-control" placeholder="Dodaj tytuł" rows="1">
+              </p>
+              <br />
+              <p class="control">
+                <input formControlName="text" type="text" class="form-control" placeholder="Dodaj treść">
+              </p>
+              
+              <br />
+              <nav class="level">
+                <div class="level-right">
+                  <div class="level-item">
+                   <button type="submit" class="btn btn-primary mb-2">Dodaj</button>
+                  </div>
+                </div>
+              </nav>
+            
+              </form>
+          </div>
         </div>
       </div>
-    </div>
+   
     </section>
     <section class="section">
       <div class="columns">
