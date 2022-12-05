@@ -1,0 +1,12 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "text": "treść pierwszego posta",
+      "date": "2022-12-04T18:20:30.186Z",
+      "attachment": "https://bulma.io/images/placeholders/256x256.png",
+      "author": "Kasia Kowalska"
+    }
+  ]
+}

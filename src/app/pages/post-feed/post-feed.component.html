@@ -16,25 +16,25 @@
           <div class="field">
             <label for="" class="label">Utwórz post</label>
            
-              <form [formGroup]="postForm" (ngSubmit)="createPost()">
+            <form [formGroup]="postForm" (ngSubmit)="createPost()">
               <p class="control">
                 <input formControlName="title" type="text" class="form-control" placeholder="Dodaj tytuł" rows="1">
               </p>
               <br />
+              
               <p class="control">
                 <input formControlName="text" type="text" class="form-control" placeholder="Dodaj treść">
               </p>
-              
               <br />
               <nav class="level">
                 <div class="level-right">
                   <div class="level-item">
-                   <button type="submit" class="btn btn-primary mb-2">Dodaj</button>
+                    <button type="submit" class="btn btn-primary mb-2">Dodaj</button>
                   </div>
                 </div>
               </nav>
-            
-              </form>
+
+            </form>
           </div>
         </div>
       </div>

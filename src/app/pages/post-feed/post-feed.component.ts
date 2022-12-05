@@ -16,23 +16,22 @@ export class PostFeedComponent implements OnInit{
 
 
   ngOnInit(): void {
-  //  this._postService.getPosts().subscribe(data => this.posts = data);
+    this._postService.getPosts().subscribe(data => this.posts = data);
     this.postForm = this.formBuilder.group({
-    
       title: [''],
       text: ['']
-     
     })
    
   }
 
   createPost() {
-    this.http.post<any>("http://localhost:3333/posts", this.postForm.value).
+    this.http.post<any>("http://localhost:3000/posts", this.postForm.value).
       subscribe(res => {
         alert("git");
+        this._postService.getPosts().subscribe(data => this.posts = data);
         this.postForm.reset();
       }, err => {alert("nie git") })
   }
-
+  
 }
 

@@ -9,7 +9,7 @@ import { IPost } from '../interfaces/post';
 })
 export class PostService {
 
-  private _url: string = "/assets/data/posts.json"
+  private _url: string = "http://localhost:3000/posts"
 
   constructor(private http: HttpClient) { }
 

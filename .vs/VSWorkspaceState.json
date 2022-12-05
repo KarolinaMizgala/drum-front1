@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\interfaces",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\post-feed",
+    "\\src\\app\\pages\\login",
+    "\\src\\app\\pages\\signup",
+    "\\src\\app\\services",
     "\\src\\assets",
     "\\src\\assets\\data"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\db.json",
   "PreviewInSolutionExplorer": false
 }
