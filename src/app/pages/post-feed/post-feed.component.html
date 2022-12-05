@@ -1,36 +1,60 @@
 <main id="main" class="main">
 
-   <div class="card">
-      <div class="card-image">
-        <figure class="image">
-         <img src="https://assets.worshipartistry.com/sites/default/files/imagecache/bloghero/greenroom-main/Blog%20Header%202%20(34).jpg"  alt="...">
-        </figure>
-      </div>
+  <div class="card">
+    <div class="card-image">
+      <figure class="image">
+        <img src="https://assets.worshipartistry.com/sites/default/files/imagecache/bloghero/greenroom-main/Blog%20Header%202%20(34).jpg" alt="...">
+      </figure>
+    </div>
 
-   </div>
+  </div>
 
   <section class="section">
-   <div class="columns">
-        <div class="column">
-           <div class="card" *ngFor = "let post of posts">
-             <div class="card-body">
-
-               <h2 class="title is-2"> {{post.title}}</h2>
-
-               <p>{{post.text}}</p>
-              <br>
-               <img width="100%" height="100%"  src="{{post.attachment}}"/>
-         
-                 <h2 class="subtitle is-6">
-                   @{{post.author}} · {{post.date |date:  "dd MMM y HH:mm" }}
-                 </h2>
-</div>
-           </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="field">
+          <label for="" class="label">Utwórz post</label>
+          <p class="control">
+            <textarea class="textarea" placeholder="Dodaj tytuł" rows="1"></textarea>
+          </p>
+          <br />
+          <p class="control">
+            <textarea class="textarea" placeholder="Dodaj treść"></textarea>
+          </p>
+          <br />
+          <nav class="level">
+            <div class="level-right">
+              <div class="level-item">
+                <a class="button is-info">Dodaj</a>
+              </div>
+            </div>
+            </nav>
         </div>
-   </div>
-        
-    
-     
-  </section>
- 
+      </div>
+    </div>
+    </section>
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="card" *ngFor="let post of posts">
+            <div class="card-body">
+
+              <h2 class="title is-2"> {{post.title}}</h2>
+
+              <p>{{post.text}}</p>
+              <br>
+              <img width="100%" height="100%" src="{{post.attachment}}" />
+
+              <h2 class="subtitle is-6">
+                @{{post.author}} · {{post.date |date:  "dd MMM y HH:mm" }}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </section>
+
 </main>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PostFeedComponent } from './pages/post-feed/post-feed.component';
-import { PostService } from './post.service';
+import { PostService } from './services/post.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { HeaderComponent } from './layouts/header/header.component';
