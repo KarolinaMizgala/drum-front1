@@ -1,4 +1,4 @@
-<section class="hero is-primary is-fullheight">
+<section class="hero is-fullheight">
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -13,18 +13,29 @@
                       <span class="icon is-small is-left">
                         <i class="fa fa-envelope"></i>
                       </span>
+                      <div *ngIf="signupForm.hasError('required', 'username')">
+                        Login jest wymagany
+                      </div>
                     </div>
                   </div>
 
               <div class="field">
                 <label for="" class="label">Email</label>
                 <div class="control has-icons-left">
-                  <input formControlName="email" type="email" placeholder="np. jankowalski@gmail.com" class="input" required>
+                  <input [class.is-invalid] = "signupForm.get('email')!.invalid && signupForm.get('email')!.touched"
+	type="email" placeholder="Email" class="input" formControlName="email" />
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
-              </div>
+                <div *ngIf="signupForm.hasError('required', 'email')">
+                  Email jest wymagany
+                </div>
+                <div *ngIf ="(signupForm.get('email')!.invalid && signupForm.get('email')!.touched) || signupForm.get('email')!.dirty"></div>
+                  <div *ngIf="signupForm.get('email')!.errors?.['pattern']" class="text-danger">Wprowadź poprawny email</div>
+                </div>
+                
+              
 
 
               <div class="field">
@@ -34,6 +45,9 @@
                   <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                   </span>
+                </div>
+                <div *ngIf="signupForm.hasError('required', 'password1')">
+                  Hasło jest wymagane
                 </div>
               </div>
 
@@ -45,32 +59,42 @@
                     <i class="fa fa-lock"></i>
                   </span>
                 </div>
+                <div *ngIf ="signupForm.hasError('notSame')" >
+                Passwords do not match
+                </div>
               </div>
+              
 
 
 
               <div class="control">
                 <label for="" class="label">Typ konta</label>
                 <label class="radio">
-                  <input formControlName="accType" value="amateur" type="radio" name="answer">
+                  <input formControlName="accType" value="amateur" type="radio" name="answer" required>
                   Amator
                 </label>
                 <label class="radio">
-                  <input formControlName="accType" value="profi" type="radio" name="answer">
+                  <input formControlName="accType" value="profi" type="radio" name="answer" required>
                   Profi
                 </label>
+                
+              </div>
+              <div *ngIf="signupForm.get('accType')!.value !== 'profi' && signupForm.get('accType')!.value !== 'amateur'">
+                Typ konta jest wymagany
               </div>
               
 
               <div class="block">
               </div>
+              <div class="block">
+              </div>
 
               <div class="field">
-                <button type="submit" class="button is-success">
+                <button type="submit" class="button is-primary" [disabled]="!signupForm.valid">
                   Zarejestruj się
                 </button>
               </div>
-              <a routerLink = "/login" style = "color: blue;"> Masz już konto? Zaloguj się</a>
+              <a routerLink = "/login" style = "color: primary;"> Masz już konto? Zaloguj się</a>
 
             </form>
           </div>

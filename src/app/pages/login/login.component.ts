@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms"
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms"
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  
+
   public loginForm!: FormGroup
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private router:Router) {}
 
   ngOnInit() :void {
     this.loginForm = this.formBuilder.group(
       {
-        email:[''],
-        password1:['']
+        email:new FormControl('', [Validators.required]),
+        password1:new FormControl('', [Validators.required]),
       }
     );
   }
@@ -29,15 +31,15 @@ export class LoginComponent {
       });
       if(user)
       {
-        alert("login success");
+        alert("Logowanie pomyślne");
         this.loginForm.reset();
         this.router.navigate(['post-feed'])
       }
       else{
-        alert("user not found");
+        alert("Nie istnieje użytkownik o podanych parametrach");
       }
     },err=>{
-      alert("nie git")
+      alert("Błąd logowania")
     })
   }
 

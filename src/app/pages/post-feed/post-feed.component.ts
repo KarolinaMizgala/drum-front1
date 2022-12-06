@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-post-feed',
@@ -20,8 +20,8 @@ export class PostFeedComponent implements OnInit{
   ngOnInit(): void {
     this._postService.getPosts().subscribe(data => this.posts = data);
     this.postForm = this.formBuilder.group({
-      title: [''],
-      text: [''],
+      title: new FormControl('', [Validators.required]),
+      text: new FormControl('', [Validators.required]),
       date: ['']
     })
    
@@ -35,10 +35,10 @@ export class PostFeedComponent implements OnInit{
 
     this.http.post<any>("http://localhost:3000/posts", this.postForm.value).
       subscribe(res => {
-        alert("git");
+        alert("Post dodany");
         this._postService.getPosts().subscribe(data => this.posts = data);
         this.postForm.reset();
-      }, err => {alert("nie git") })
+      }, err => {alert("Nie udało się dodać posta") })
   }
   
 }

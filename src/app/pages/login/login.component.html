@@ -1,4 +1,4 @@
-<section class="hero is-primary is-fullheight">
+<section class="hero is-fullheight">
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -12,6 +12,9 @@
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
+                <div *ngIf="loginForm.hasError('required', 'email')">
+                  Email jest wymagany
+                </div>
               </div>
               <div class="field">
                 <label for="" class="label">Hasło</label>
@@ -21,6 +24,9 @@
                     <i class="fa fa-lock"></i>
                   </span>
                 </div>
+                <div *ngIf="loginForm.hasError('required', 'password1')">
+                  Hasło jest wymagane
+                </div>
               </div>
               <div class="field">
                 <label for="" class="checkbox">
@@ -29,11 +35,11 @@
                 </label>
               </div>
               <div class="field">
-                <button type="submit" class="button is-success">
+                <button type="submit" class="button is-primary">
                   Zaloguj się
                 </button>
               </div>
-              <a routerLink = "/signup" style = "color: blue;"> Nowy Użytkownik? Zarejestruj się</a>
+              <a routerLink = "/signup" style = "color: primary;"> Nowy Użytkownik? Zarejestruj się</a>
             </form>
           </div>
         </div>
