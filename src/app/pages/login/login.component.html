@@ -3,11 +3,11 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-            <form action="" class="box">
+            <form [formGroup]="loginForm" (ngSubmit)="login()" class="box">
               <div class="field">
                 <label for="" class="label">Email</label>
                 <div class="control has-icons-left">
-                  <input type="email" placeholder="np. jankowalski@gmail.com" class="input" required>
+                  <input formControlName="email" type="email" placeholder="np. jankowalski@gmail.com" class="input" required>
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
@@ -16,7 +16,7 @@
               <div class="field">
                 <label for="" class="label">Hasło</label>
                 <div class="control has-icons-left">
-                  <input type="password" placeholder="*******" class="input" required>
+                  <input formControlName="password" type="password" placeholder="*******" class="input" required>
                   <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                   </span>
@@ -29,7 +29,7 @@
                 </label>
               </div>
               <div class="field">
-                <button class="button is-success">
+                <button type="submit" class="button is-success">
                   Zaloguj się
                 </button>
               </div>

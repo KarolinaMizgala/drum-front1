@@ -12,6 +12,8 @@ export class PostFeedComponent implements OnInit{
   public posts : any;
   public postForm !: FormGroup;
 
+  public myDate!: Date;
+
   constructor(private _postService: PostService, private formBuilder : FormBuilder, private http: HttpClient ) {}
 
 
@@ -19,12 +21,18 @@ export class PostFeedComponent implements OnInit{
     this._postService.getPosts().subscribe(data => this.posts = data);
     this.postForm = this.formBuilder.group({
       title: [''],
-      text: ['']
+      text: [''],
+      date: ['']
     })
    
   }
 
   createPost() {
+
+    this.myDate = new Date();
+    this.postForm.value.date = this.myDate;
+
+
     this.http.post<any>("http://localhost:3000/posts", this.postForm.value).
       subscribe(res => {
         alert("git");
