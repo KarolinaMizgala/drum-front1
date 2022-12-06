@@ -18,9 +18,10 @@ export class SignupComponent {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      login: [''],
+      username: [''],
       email: [''],
-      password: [''],
+      password1: [''],
+      password2: [''],
       accType: ['']
     })
    
@@ -29,7 +30,7 @@ export class SignupComponent {
   createUser() {
 
 
-    this.http.post<any>("http://localhost:3000/signupUsers", this.signupForm.value).
+    this.http.post<any>("http://91.222.75.23:25565/sign-up", this.signupForm.value).
       subscribe(res => {
         alert("git");
         this.signupForm.reset();

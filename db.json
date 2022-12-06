@@ -7,7 +7,28 @@
       "date": "2022-12-04T18:20:30.186Z",
       "attachment": "https://bulma.io/images/placeholders/256x256.png",
       "author": "Kasia Kowalska"
+    },
+    {
+      "title": "karolinypost",
+      "text": "karolinyteesc",
+      "date": "2022-12-06T16:02:44.034Z",
+      "id": 2
     }
   ],
-  "signupUsers": []
+  "signupUsers": [
+    {
+      "login": "karolina",
+      "email": "karolinymejl",
+      "password": "karolinyhaslo",
+      "accType": "amateur",
+      "id": 1
+    },
+    {
+      "login": "log",
+      "email": "em",
+      "password": "pas",
+      "accType": "amateur",
+      "id": 2
+    }
+  ]
 }

@@ -17,7 +17,7 @@ export class LoginComponent {
     this.loginForm = this.formBuilder.group(
       {
         email:[''],
-        password:['']
+        password1:['']
       }
     );
   }
@@ -25,7 +25,7 @@ export class LoginComponent {
     this.http.get<any>("http://localhost:3000/signupUsers")
     .subscribe(res=>{
       const user = res.find((a:any)=>{
-        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password;
+        return a.email === this.loginForm.value.email && a.password1 === this.loginForm.value.password1;
       });
       if(user)
       {
