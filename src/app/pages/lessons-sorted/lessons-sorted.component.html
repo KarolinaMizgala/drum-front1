@@ -1,0 +1,20 @@
+<main id="main" class="main">
+    <div class="container has-text-centered">
+      <div class="columns">
+        <ng-container class="column is-4"  *ngFor="let lesson of lessons">
+          <div class="lesson-card"  *ngIf="[lessons_category]==lesson.category">
+            <div class="date">
+              <h3>{{lesson.date |date:  "dd" }}</h3>
+              <h4>{{lesson.date |date:  "MMMM" }}</h4>
+            </div>
+            <div class="lesson-img">
+              <img src="{{lesson.attachment}}" alt="P1">
+            </div>
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.text}}</p>
+            <a  (click)="goToLesson(lesson.title)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+</main>

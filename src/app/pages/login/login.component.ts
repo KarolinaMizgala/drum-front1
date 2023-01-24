@@ -12,6 +12,8 @@ export class LoginComponent {
 
   
 
+  
+
   public loginForm!: FormGroup
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private router:Router) {}
 
@@ -24,23 +26,29 @@ export class LoginComponent {
     );
   }
   login() :void {
-    this.http.get<any>("http://localhost:3000/signupUsers")
-    .subscribe(res=>{
-      const user = res.find((a:any)=>{
-        return a.email === this.loginForm.value.email && a.password1 === this.loginForm.value.password1;
-      });
-      if(user)
-      {
-        alert("Logowanie pomyślne");
-        this.loginForm.reset();
-        this.router.navigate(['post-feed'])
-      }
-      else{
-        alert("Nie istnieje użytkownik o podanych parametrach");
-      }
-    },err=>{
-      alert("Błąd logowania")
-    })
+    // this.http.get<any>("http://localhost:3000/signupUsers")
+    // .subscribe(res=>{
+    //   const user = res.find((a:any)=>{
+    //     return a.email === this.loginForm.value.email && a.password1 === this.loginForm.value.password1;
+    //   });
+    //   if(user)
+    //   {
+    //     alert("Logowanie pomyślne");
+    //     this.loginForm.reset();
+    //     this.router.navigate(['post-feed'])
+    //   }
+    //   else{
+    //     alert("Nie istnieje użytkownik o podanych parametrach");
+    //   }
+    // },err=>{
+    //   alert("Błąd logowania")
+    // })
+
+    var request = new XMLHttpRequest();
+    request.open("POST", 'http://91.222.75.23:25565/login/');
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    request.send("username="+this.loginForm.value.email+"&password="+this.loginForm.value.password1);
   }
 
 }

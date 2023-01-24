@@ -1,26 +1,20 @@
-<nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" routerLink="/post-feed">
-        <img src="../../../assets/logo.png" width="37" height="30">
-        <span class="d-none d-lg-block is-family-sans-serif">drummerspage.com</span>
-      </a>
-  
-     
-    </div>
-  
-   
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary" routerLink="/signup">
-              <strong>Zarejestruj się</strong>
-            </a>
-            <a class="button is-light" routerLink="/login">
-              Zaloguj się
-            </a>
-          </div>
-        </div>
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation" id="header">
+
+
+
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-primary" routerLink="/signup">
+          <strong>Zarejestruj się</strong>
+        </a>
+        <a class="button is-light" routerLink="/login">
+          Zaloguj się
+        </a>
+        
       </div>
-  
-  </nav>
+    </div>
+  </div>
+  <i (click)="sidebarToggle()" class="uil uil-bars sidebar-toggle"></i>
+</nav>
