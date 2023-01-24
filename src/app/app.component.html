@@ -1,6 +1,5 @@
-<app-header></app-header>
-<app-side-nav-bar ></app-side-nav-bar>
-
+<app-side-nav-bar *ngIf="!(_router.url === '/signup' || _router.url === '/login')"></app-side-nav-bar>
+<app-header  *ngIf="!(_router.url === '/signup' || _router.url === '/login')"></app-header>
 <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+<!-- <app-footer *ngIf="!(_router.url === '/signup' || _router.url === '/login')"></app-footer> -->

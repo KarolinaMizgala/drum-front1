@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PostFeedComponent } from './pages/post-feed/post-feed.component';
 import { PostService } from './services/post.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 import { HeaderComponent } from './layouts/header/header.component';
 import { SideNavBarComponent } from './layouts/sidenavbar/side-nav-bar.component';
@@ -22,6 +23,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselComponent } from 'ngx-owl-carousel-o/public_api';
+import { FormsModule } from '@angular/forms';
+import { LessonComponent } from './pages/lesson/lesson.component';
+import { LessonsFeedComponent } from './pages/lessons-feed/lessons-feed.component';
+import { LessonsSortedComponent } from './pages/lessons-sorted/lessons-sorted.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +38,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignupComponent
-
-  
+    SignupComponent,
+    LessonsFeedComponent,
+    LessonComponent,
+    LessonsSortedComponent,
 
   ],
   imports: [
@@ -40,8 +49,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule, 
     BrowserAnimationsModule,
     HttpClientModule, 
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+RouterModule,
+CarouselModule, 
+FormsModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

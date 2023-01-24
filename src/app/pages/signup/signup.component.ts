@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -41,13 +42,46 @@ export class SignupComponent {
 
   createUser() {
 
+    var request = new XMLHttpRequest();
+    request.open("POST", 'http://91.222.75.23:25565/sign-up');
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    this.http.post<any>("http://localhost:3000/signupUsers", this.signupForm.value).
-      subscribe(res => {
-        alert("Konto założone");
-        this.signupForm.reset();
-        this.router.navigate(['login']);
-      }, err => {alert("Nie udało się zakłożyć konta") })
+    request.send("username="+this.signupForm.value.username+"&password1="+this.signupForm.value.password1+"&password2="+this.signupForm.value.password2+"&email="+this.signupForm.value.email+"&accType="+this.signupForm.value.accType);
+
+
+    // const headers = new HttpHeaders({
+    //   'disable-cors': '',
+    //   'host': 'http://91.222.75.23:25565'
+    // });
+    
+    // const formData = {
+    //   username: this.signupForm.value.username,
+    //   password1: this.signupForm.value.password1,
+    //   password2: this.signupForm.value.password2,
+    //   email: this.signupForm.value.email,
+    //   accType: this.signupForm.value.accType
+    // };
+
+    // const options = {
+    //   headers: headers,
+    //   body: formData
+    // };
+
+    
+    
+    // this.http.post('http://91.222.75.23:25565/sign-up', options)
+    //   .subscribe((response) => {
+    //     alert("Konto założone");
+    //     this.signupForm.reset();
+    //     this.router.navigate(['login']);
+    //   },err => {alert("Nie udało się zakłożyć konta") })
+
+   //this.http.post<any>("http://91.222.75.23:25565/sign-up", this.signupForm.value).
+  //     subscribe(res => {
+  //       alert("Konto założone");
+  //       this.signupForm.reset();
+  //       this.router.navigate(['login']);
+  //     }, err => {alert("Nie udało się zakłożyć konta") })
+  // }
   }
-
 }

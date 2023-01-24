@@ -1,0 +1,29 @@
+<div class="hero">
+    <ng-container class="section" *ngFor="let lesson of lessons">
+        <div class="container" *ngIf="[lesson_ID]==lesson.title">
+       <div class="category">LEKCJE<span class="dot"> · </span>{{lesson.category}}</div>
+            <div class="title">{{lesson.title}}</div>
+        <div class="subtitle">{{lesson.text}}</div>
+        <div class="author">Autor:&nbsp; {{lesson.author}}</div>
+        <div class="date">Upublikowano:&nbsp; {{lesson.date|date:  "dd MMMM y"}}</div>
+
+    </div>
+    </ng-container>
+</div>
+<main id="main" class="main">
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <div class="card" *ngFor="let lesson of lessons">
+
+                    <div class="card-body" *ngIf="[lesson_ID]==lesson.title">
+                        <div class="card-image">
+                            <!-- <img src="{{lesson.attachment}}" alt="P1"> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

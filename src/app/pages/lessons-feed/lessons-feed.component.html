@@ -1,0 +1,90 @@
+<main id="main" class="main">
+  <div class="tiles">
+    <div class="tile is-ancestor" >
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-parent is-vertical " (click)="goToCategory('piosenki')">
+            <article class="tile is-child box">
+              <img src="assets/icon/4.png">
+              <p class="subtitle" >PIOSENKI</p>
+            </article>
+
+          </div>
+          <div class="tile is-parent" (click)="goToCategory('techniki')">
+            <article class="tile is-child box">
+
+              <img src="assets/icon/5.png">
+              <p class="subtitle">TECHNIKI</p>
+            </article>
+          </div>
+          <div class="tile is-parent" (click)="goToCategory('sprzet')">
+            <article class="tile is-child box">
+              <img src="assets/icon/6.png">
+              <p class="subtitle">O SPRZĘCIE</p>
+            </article>
+          </div>
+          <div class="tile is-parent" (click)="goToCategory('zagrywki')">
+            <article class="tile is-child box">
+              <img src="assets/icon/7.png">
+              <p class="subtitle">ZAGRYWKI</p>
+            </article>
+          </div>
+          <div class="tile is-parent " (click)="goToCategory('teoria')">
+            <article class="tile is-child box">
+              <img src="assets/icon/10.png">
+              <p class="subtitle">TEORIA</p>
+
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ 
+  <section class="lesson">
+    <div class="title">Ostatnio dodane lekcje</div>
+    <div class="container has-text-centered">
+      <div class="columns">
+        <div class="column is-4"  *ngFor="let lesson of lessons.slice(0, 3)">
+          <div class="lesson-card">
+            <div class="date">
+              <h3>{{lesson.date |date:  "dd" }}</h3>
+              <h4>{{lesson.date |date:  "MMMM" }}</h4>
+            </div>
+            <div class="lesson-img">
+              <img src="{{lesson.attachment}}" alt="P1">
+            </div>
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.text}}</p>
+            <a  (click)="goToLesson(lesson.title)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section class="lesson">
+    <div class="title">Ostatnio oglądane lekcje</div>
+    <div class="container has-text-centered">
+      <div class="columns">
+        <div class="column is-4"  *ngFor="let lesson of lessons.slice(1, 4)">
+          <div class="lesson-card">
+            <div class="date">
+              <h3>{{lesson.date |date:  "dd" }}</h3>
+              <h4>{{lesson.date |date:  "MMMM" }}</h4>
+            </div>
+            <div class="lesson-img">
+              <img src="{{lesson.attachment}}" alt="P1">
+            </div>
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.text}}</p>
+            <a class="read-more" (click)="goToLesson(lesson.title)">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>

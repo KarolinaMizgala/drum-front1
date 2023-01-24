@@ -9,5 +9,47 @@
       "author": "Kasia Kowalska"
     }
   ],
-  "signupUsers": []
+  "signupUsers": [],
+  "lessons":[
+    {
+      "id": 1,
+      "title": "Style, trzymanie pałek i ułożenie rąk",
+      "text": "Jak trzymać pałki perkusyjne? Co warto wiedzieć i o czym należy pamiętać?",
+      "date": "2018-08-04T18:20:30.186Z",
+      "attachment": "https://static.wixstatic.com/media/2fe89e_a59cbf1a98214f2aac21cb62ef7cbfea~mv2_d_3263_1638_s_2.jpg/v1/fill/w_889,h_445,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Nauka%20gry%20na%20perkusji.jpg",
+      "author": "Kasia Kowalska",
+      "category": "techniki"
+
+    },
+        {
+      "id": 2,
+      "title": "Triolowy groove ósemkowy",
+      "text": "Technicznie rzecz biorąc, bierze się od shuffle, ale jest łatwiejszy w graniu niż „prawdziwy“ shuffle",
+      "date": "2020-10-26T18:20:30.186Z",
+      "attachment": "https://magazynperkusista.pl/i/images/7/0/3/dz01MDA=_src_3703-duze.jpg",
+      "author": "Jan Nowak",
+      "category": "zagrywki"
+
+    },
+    {
+      "id": 3,
+      "title": "Zestaw perkusyjny",
+      "text": "Czym jest zestaw perkusyjny? Jakie elementy składają się na zestaw? Przyjrzyjmy się mu bliżej.",
+      "date": "2022-03-01T18:20:30.186Z",
+      "attachment": "https://www.superprof.pl/blog/wp-content/uploads/2020/09/czarna-perkusja.jpg",
+      "author": "Jessica Bigos",
+      "category": "sprzet"
+
+    },
+    {
+      "id": 4,
+      "title": "RED HOT CHILI PEPPERS - Californication",
+      "text": "Nuty na perkusję",
+      "date": "2023-01-01T18:20:30.186Z",
+      "attachment": "https://playournotes.com/pl/nuty/californication/113/nuty-na-perkusje.jpg",
+      "author": "Tomasz Jagoda",
+      "category": "piosenki"
+
+    }
+  ]
 }
