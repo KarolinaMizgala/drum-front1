@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,14 @@ import { DOCUMENT } from '@angular/common'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+
+
+  logged = false
+
+  constructor(@Inject(DOCUMENT) private document: Document, private service: LoginService) { }
   public users : any;
   ngOnInit(): void {
+    this.logged = this.service.loggedState
   }
 
   sidebarToggle()

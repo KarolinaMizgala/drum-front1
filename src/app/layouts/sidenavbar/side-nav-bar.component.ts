@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-side-nav-bar',
   templateUrl: './side-nav-bar.component.html',
@@ -7,9 +9,13 @@ import { DOCUMENT } from '@angular/common'
 })
 export class SideNavBarComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+
+  logged = false
+
+  constructor(@Inject(DOCUMENT) private document: Document, private router:Router,private service:LoginService) { }
 
   ngOnInit(): void {
+    this.logged = this.service.loggedState
   }
 
 
@@ -17,6 +23,18 @@ export class SideNavBarComponent implements OnInit {
   {
     //toggle sidebar function
    this.document.body./*querySelector(".sidebar")?.*/classList.toggle('close');
+  }
+  logout() {
+    const res = fetch("http://localhost:25565/logout", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.afterLogout(x);
+    });
+  }
+
+  afterLogout(x:JSON)
+  {
+    this.service.loggedState = this.logged
+    this.router.navigate(['login'])
   }
 
 }

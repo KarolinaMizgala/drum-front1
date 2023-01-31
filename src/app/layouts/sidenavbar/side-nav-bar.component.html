@@ -109,12 +109,10 @@
 
  
    </div>
-   <div class="bottom-content">
-      <li class="">
-         <a href="#">
+   <div *ngIf = "logged" class="bottom-content">
+      <li class="nav-links" (click)="logout()">
             <i class="uil uil-signout icon"></i>
             <span class="link-name">Wyloguj się</span>
-         </a>
       </li>
 
    </div>
