@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, NgModule } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LessonService } from 'src/app/services/lesson.service';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-lessons',
   templateUrl: './lessons-feed.component.html',
@@ -11,6 +11,7 @@ import { LessonService } from 'src/app/services/lesson.service';
 })
 export class LessonsFeedComponent  {
   
+  logged = false
 
   public lessons: any;
   public lessonsForm !: FormGroup;
@@ -18,8 +19,9 @@ export class LessonsFeedComponent  {
   private lessons_category: string | undefined;
   public myDate!:Date;
   
-  constructor(private _lessonService: LessonService,private formBuilder : FormBuilder, private http: HttpClient, private router:Router ) {}
+  constructor(private _lessonService: LessonService,private formBuilder : FormBuilder, private http: HttpClient, private router:Router, private service: LoginService) {}
   ngOnInit(): void {
+    this.logged = this.service.loggedState
     this._lessonService.getPosts().subscribe(data => this.lessons = data);
     this.lessonsForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required]),

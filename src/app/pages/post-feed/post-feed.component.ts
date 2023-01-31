@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-post-feed',
   templateUrl: './post-feed.component.html',
@@ -9,15 +10,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostFeedComponent implements OnInit{
 
+  logged = false
+
   public posts : any;
   public postForm !: FormGroup;
 
   public myDate!: Date;
 
-  constructor(private _postService: PostService, private formBuilder : FormBuilder, private http: HttpClient ) {}
+  constructor(private _postService: PostService, private formBuilder : FormBuilder, private http: HttpClient, private service:LoginService) {}
 
 
   ngOnInit(): void {
+    this.logged = this.service.loggedState
     this._postService.getPosts().subscribe(data => this.posts = data);
     this.postForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required]),
