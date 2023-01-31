@@ -66,11 +66,11 @@
 
   </section>
   <section class="lesson">
-    <div class="title">Ostatnio oglądane lekcje</div>
+    <div class="title">Wszystkie lekcje</div>
     <div class="container has-text-centered">
-      <div class="columns">
-        <div class="column is-4"  *ngFor="let lesson of lessons.slice(1, 4)">
-          <div class="lesson-card">
+      <div class="columns " >
+        <div class="column is-4"  *ngFor="let lesson of lessons"  >
+          <div class="lesson-card" >
             <div class="date">
               <h3>{{lesson.date |date:  "dd" }}</h3>
               <h4>{{lesson.date |date:  "MMMM" }}</h4>
@@ -86,5 +86,8 @@
       </div>
     </div>
 
+  </section>
+  <section class="lesson-create">
+    <div class="title">Dodaj lekcje</div>
   </section>
 </main>

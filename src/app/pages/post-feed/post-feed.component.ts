@@ -40,6 +40,7 @@ export class PostFeedComponent implements OnInit{
         this.postForm.reset();
       }, err => {alert("Nie udało się dodać posta") })
   }
-  
+
+
 }
 

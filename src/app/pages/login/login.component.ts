@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms"
 import { Router } from '@angular/router';
-
+import { DOCUMENT } from '@angular/common'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,40 +15,22 @@ export class LoginComponent {
   
 
   public loginForm!: FormGroup
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router:Router) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private formBuilder: FormBuilder, private http: HttpClient, private router:Router) {}
 
   ngOnInit() :void {
     this.loginForm = this.formBuilder.group(
       {
-        email:new FormControl('', [Validators.required]),
+        login:new FormControl('', [Validators.required]),
         password1:new FormControl('', [Validators.required]),
       }
     );
   }
   login() :void {
-    // this.http.get<any>("http://localhost:3000/signupUsers")
-    // .subscribe(res=>{
-    //   const user = res.find((a:any)=>{
-    //     return a.email === this.loginForm.value.email && a.password1 === this.loginForm.value.password1;
-    //   });
-    //   if(user)
-    //   {
-    //     alert("Logowanie pomyślne");
-    //     this.loginForm.reset();
-    //     this.router.navigate(['post-feed'])
-    //   }
-    //   else{
-    //     alert("Nie istnieje użytkownik o podanych parametrach");
-    //   }
-    // },err=>{
-    //   alert("Błąd logowania")
-    // })
-
-    var request = new XMLHttpRequest();
-    request.open("POST", 'http://91.222.75.23:25565/login/');
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    request.send("username="+this.loginForm.value.email+"&password="+this.loginForm.value.password1);
+    let data = {"login": this.loginForm.value.login, "password": this.loginForm.value.password1};
+    const res = fetch("http://localhost:25565/login", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      console.log( JSON.stringify(x));
+    });
   }
 
 }

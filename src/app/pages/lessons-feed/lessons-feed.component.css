@@ -5,6 +5,15 @@ padding-right: 20px;
 padding-top: 20px;
 justify-items: center;
 }
+.column .is-4
+{
+    width: 30%;
+  padding: 1rem;
+}
+.columns {
+    /* display: flex; */
+    flex-wrap: wrap; 
+  }
 .subtitle
 {
     text-align: center;
@@ -16,6 +25,9 @@ padding: 60px 0;
 padding-left: 20px;
 padding-right: 10px;
 justify-items: center;
+display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .lesson-card {
@@ -72,6 +84,7 @@ font-weight: 700;
 margin: 18px 0 10px;
 cursor: pointer;
 transition: all .3s ease;
+
 }
 .lesson-card h2:hover{
 color: hotpink;
@@ -83,6 +96,7 @@ color: hotpink;
     margin: 18px 0 10px;
     transition: all .3s ease;
     font-weight: 900;
+  
 }
 .read-more{
    color: #fff;
@@ -109,4 +123,10 @@ float: auto;
 }
 .read-more:hover i{
    margin-left: 6px;
+}
+.lesson-create
+{
+    padding: 60px 0;
+padding-left: 20px;
+padding-right: 10px;
 }

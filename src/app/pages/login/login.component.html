@@ -16,12 +16,12 @@
               <div class="field">
                 <label for="" class="label">Email</label>
                 <div class="control has-icons-left">
-                  <input formControlName="email" type="email" placeholder="np. jankowalski@gmail.com" class="input" required>
+                  <input formControlName="login" type="login" placeholder="np. jankowalski@gmail.com" class="input" required>
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
-                <div *ngIf="loginForm.hasError('required', 'email')">
+                <div *ngIf="loginForm.hasError('required', 'login')">
                   Email jest wymagany
                 </div>
               </div>
