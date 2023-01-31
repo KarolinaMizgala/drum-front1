@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common'
 })
 export class HeaderComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private document: Document) { }
-
+  public users : any;
   ngOnInit(): void {
   }
 
@@ -17,6 +17,13 @@ export class HeaderComponent implements OnInit {
     //toggle sidebar function
    this.document.body./*querySelector(".sidebar")?.*/classList.toggle('close');
   }
+  
+  getUserName():void {
+    const res = fetch("http://localhost:25565/getUserName", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      console.log( JSON.stringify(x));
+    });
 
+  }
 
 }
