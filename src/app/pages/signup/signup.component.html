@@ -11,7 +11,7 @@
                   <div class="control has-icons-left">
                     <input formControlName="username" type="text" placeholder="Login" class="input" required>
                     <span class="icon is-small is-left">
-                      <i class="fa fa-envelope"></i>
+                      <i class="fa fa-user"></i>
                     </span>
                     <div *ngIf="signupForm.hasError('required', 'username')">
                       Login jest wymagany
@@ -74,7 +74,7 @@ type="email" placeholder="Email" class="input" formControlName="email" />
                 Amator
               </label>
               <label class="radio">
-                <input formControlName="accType" value="profi" type="radio" name="answer" required>
+                <input formControlName="accType" value="pro" type="radio" name="answer" required>
                 Profi
               </label>
               

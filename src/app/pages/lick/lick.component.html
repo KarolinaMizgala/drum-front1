@@ -1,0 +1,29 @@
+<div class="hero">
+    <ng-container class="section" *ngFor="let lick of licks">
+        <div class="container" *ngIf="[lick_ID]==lick.id">
+       <div class="category">ZAGRYWKI<span class="dot"> · </span>{{lick.category}}</div>
+            <div class="title">{{lick.title}}</div>
+        <div class="subtitle">{{lick.content}}</div>
+        <div class="author">Autor:&nbsp; {{lick.author}}</div>
+        <div class="date">Upublikowano:&nbsp; {{lick.date|date:  "dd MMMM y"}}</div>
+
+    </div>
+    </ng-container>
+</div>
+<main id="main" class="main">
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <div class="card" *ngFor="let lick of licks">
+
+                    <div class="card-body" *ngIf="[lick_ID]==lick.id">
+                        
+                             <img *ngFor="let attachment of lick.attachments" class="center" src="https://light.one.pl/lickAttachment/{{attachment}} ">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+    
+</main>

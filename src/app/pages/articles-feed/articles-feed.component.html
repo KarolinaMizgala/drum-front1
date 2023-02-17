@@ -1,0 +1,139 @@
+<main id="main" class="main">
+    <div class="tiles">
+      <div class="tile is-ancestor" >
+        <div class="tile is-vertical">
+          <div class="tile">
+            <div class="tile is-parent is-vertical " (click)="goToCategory('wydarzenia')">
+              <article class="tile is-child box">
+                <img src="assets/icon/events.png">
+                <p class="subtitle" >WYDARZENIA</p>
+              </article>
+  
+            </div>
+            <div class="tile is-parent" (click)="goToCategory('recenzje')">
+              <article class="tile is-child box">
+  
+                <img src="assets/icon/review.png">
+                <p class="subtitle">RECENZJE</p>
+              </article>
+            </div>
+            <div class="tile is-parent" (click)="goToCategory('perkusisci')">
+              <article class="tile is-child box">
+                <img src="assets/icon/drummer.png">
+                <p class="subtitle">ZNANI PERKUSIŚCI</p>
+              </article>
+            </div>
+            <div class="tile is-parent" (click)="goToCategory('sprzet')">
+              <article class="tile is-child box">
+                <img src="assets/icon/6.png">
+                <p class="subtitle">SPRZĘT</p>
+              </article>
+            </div>
+
+          </div>
+  
+        </div>
+      </div>
+    </div>
+   
+    <section class="article">
+      <div class="title">Ostatnio dodane artykuły</div>
+      <section class="article">
+      <div class="container has-text-centered">
+        <div class="columns">
+          <div class="column is-4"  *ngFor="let article of articles.slice(0, 3)">
+            <div class="article-card">
+              <div class="date">
+                <h3>{{article.date |date:  "dd" }}</h3>
+                <h4>{{article.date |date:  "MMMM" }}</h4>
+              </div>
+              <div class="article-img">
+                <!--<img src="https://light.one.pl/lessonAttachment/{{lesson.attachment}}" alt="P1">-->
+              </div>
+              <h2>{{article.title}}</h2>
+              <p>{{article.content}}</p>
+              <a  (click)="goToArticle(article.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    </section>
+    <section class="article">
+      <div class="title">Wszystkie artykuły</div>
+      <section class="article">
+      <div class="container has-text-centered">
+        <div class="columns">
+          <div class="column is-4"  *ngFor="let article of articles">
+            <div class="article-card">
+              <div class="date">
+                <h3>{{article.date |date:  "dd" }}</h3>
+                <h4>{{article.date |date:  "MMMM" }}</h4>
+              </div>
+              <div class="article-img">
+                <!--<img src="https://light.one.pl/lessonAttachment/{{lesson.attachment}}" alt="P1">-->
+              </div>
+              <h2>{{article.title}}</h2>
+              <p>{{article.content}}</p>
+              <a  (click)="goToArticle(article.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    </section>
+    <section *ngIf="usertype==proString || usertype==adminString" class="article-create">
+      <!--<div *ngIf="usertype==proString" class="title">Dodaj lekcje</div>-->
+      <div class="title">Dodaj artykuł</div>
+      <!--<form *ngIf="usertype===proString" [formGroup]="lessonsForm" (ngSubmit)="createLesson()"></form>-->
+  
+      <div class="field">
+        <label class="label">Tytuł artykułu</label>
+        <div class="control has-icons-left has-icons-right">
+          <input id="title" class="input" type="text" placeholder="Text input" value="tytuł">
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Treść artykułu</label>
+        <div class="control has-icons-left has-icons-right">
+          <input id="text" class="input" type="text" placeholder="Text input" value="treść">
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Kategoria artykułu</label>
+        <div class="control">
+          <div class="select">
+            <select id="category">
+              <option>Wybierz kategorię...</option>
+              <option>Wydarzenia</option>
+              <option>Recenzje</option>
+              <option>Znani perkusiści</option>
+              <option>Sprzęt</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <div class="field is-grouped">
+        <input class="input" type="file" accept="image/png" id="fileInput">
+  
+  
+      </div>
+  
+      
+      
+      
+      
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" (click) = "createArticle()">Submit </button>
+        </div>
+  
+      </div>
+    </section>
+  </main>
+  

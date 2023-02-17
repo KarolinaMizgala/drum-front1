@@ -11,11 +11,14 @@ export class SideNavBarComponent implements OnInit {
 
 
   logged = false
+  usertype = "admin"
+  adminString = "admin"
 
   constructor(@Inject(DOCUMENT) private document: Document, private router:Router,private service:LoginService) { }
 
   ngOnInit(): void {
     this.logged = this.service.loggedState
+    this.getUserType()
   }
 
 
@@ -25,7 +28,7 @@ export class SideNavBarComponent implements OnInit {
    this.document.body./*querySelector(".sidebar")?.*/classList.toggle('close');
   }
   logout() {
-    const res = fetch("http://localhost:25565/logout", {method: "GET", credentials: 'include'});
+    const res = fetch(LoginService.backAddress+"logout", {method: "GET", credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
       this.afterLogout(x);
     });
@@ -35,6 +38,14 @@ export class SideNavBarComponent implements OnInit {
   {
     this.service.loggedState = this.logged
     this.router.navigate(['login'])
+  }
+
+  getUserType() :void{
+    const res = fetch(LoginService.backAddress+"getUserType", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.usertype = x.userType
+    });
+
   }
 
 }

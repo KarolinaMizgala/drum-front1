@@ -29,7 +29,7 @@ export class LoginComponent {
   }
   login() :void {
     let data = {"login": this.loginForm.value.login, "password": this.loginForm.value.password1};
-    const res = fetch("http://localhost:25565/login", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
+    const res = fetch(LoginService.backAddress+"login", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
       this.afterLogin(x);
     });

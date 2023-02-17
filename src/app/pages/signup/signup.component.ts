@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validator } from '@angular/forms';
 
@@ -16,11 +17,13 @@ import { Validator } from '@angular/forms';
 export class SignupComponent {
 
 
-  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router:Router ) {}
+  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router:Router, private service: LoginService ) {}
 
   public signupForm !: FormGroup;
   public repeatPassword !: String
   public btnActive = false
+
+  logged = false
 
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
     let pass = group.get('password1')!.value;
@@ -40,48 +43,24 @@ export class SignupComponent {
     this.btnActive = false;
   }
 
-  createUser() {
-
-    var request = new XMLHttpRequest();
-    request.open("POST", 'http://91.222.75.23:25565/sign-up');
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    request.send("username="+this.signupForm.value.username+"&password1="+this.signupForm.value.password1+"&password2="+this.signupForm.value.password2+"&email="+this.signupForm.value.email+"&accType="+this.signupForm.value.accType);
-
-
-    // const headers = new HttpHeaders({
-    //   'disable-cors': '',
-    //   'host': 'http://91.222.75.23:25565'
-    // });
-    
-    // const formData = {
-    //   username: this.signupForm.value.username,
-    //   password1: this.signupForm.value.password1,
-    //   password2: this.signupForm.value.password2,
-    //   email: this.signupForm.value.email,
-    //   accType: this.signupForm.value.accType
-    // };
-
-    // const options = {
-    //   headers: headers,
-    //   body: formData
-    // };
-
-    
-    
-    // this.http.post('http://91.222.75.23:25565/sign-up', options)
-    //   .subscribe((response) => {
-    //     alert("Konto założone");
-    //     this.signupForm.reset();
-    //     this.router.navigate(['login']);
-    //   },err => {alert("Nie udało się zakłożyć konta") })
-
-   //this.http.post<any>("http://91.222.75.23:25565/sign-up", this.signupForm.value).
-  //     subscribe(res => {
-  //       alert("Konto założone");
-  //       this.signupForm.reset();
-  //       this.router.navigate(['login']);
-  //     }, err => {alert("Nie udało się zakłożyć konta") })
-  // }
+  createUser() :void {
+    let data = {"login": this.signupForm.value.username, "password": this.signupForm.value.password1, "type": this.signupForm.value.accType};
+    const res = fetch(LoginService.backAddress+"register", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.afterCreateUser(x);
+    });
   }
-}
+  afterCreateUser(s: JSON) :void{
+    if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
+    {
+      //rejestracja udana
+      this.logged = true
+      this.service.loggedState = this.logged
+      this.router.navigate(['post-feed'])
+    }
+    else
+    {
+      //błąd rejestracji
+    }
+  }
+  }

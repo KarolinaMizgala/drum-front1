@@ -3,7 +3,7 @@
 export interface IPost {
     id: number,
     title: string,
-  text: string,
+  content: string,
   date: Date,
   attachment: string,
   author:string 

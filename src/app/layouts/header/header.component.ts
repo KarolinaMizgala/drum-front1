@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
 import { LoginService } from 'src/app/services/login.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,18 @@ export class HeaderComponent implements OnInit {
 
   logged = false
 
-  constructor(@Inject(DOCUMENT) private document: Document, private service: LoginService) { }
+  username = ""
+  backAddress = ""
+
+  constructor(@Inject(DOCUMENT) private document: Document, private http: HttpClient, private service: LoginService) { }
   public users : any;
   ngOnInit(): void {
     this.logged = this.service.loggedState
+    if(this.logged)
+    {
+    this.getUserName();
+    }
+    this.backAddress = LoginService.backAddress
   }
 
   sidebarToggle()
@@ -24,12 +33,16 @@ export class HeaderComponent implements OnInit {
    this.document.body./*querySelector(".sidebar")?.*/classList.toggle('close');
   }
   
-  getUserName():void {
-    const res = fetch("http://localhost:25565/getUserName", {method: "GET", credentials: 'include'});
+
+  getUserName() {
+    const res = fetch(LoginService.backAddress+"getUserName", {method: "GET", credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
-      console.log( JSON.stringify(x));
+      document.getElementById("getUserNameOutput")!.innerHTML = x.userName
+      this.username = x.userName
     });
+  }
 
   }
 
-}
+ 
+

@@ -27,6 +27,14 @@ import { FormsModule } from '@angular/forms';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { LessonsFeedComponent } from './pages/lessons-feed/lessons-feed.component';
 import { LessonsSortedComponent } from './pages/lessons-sorted/lessons-sorted.component';
+import { AccountComponent } from './pages/account/account.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { AdsBarComponent } from './ads-bar/ads-bar.component';
+import { ArticlesFeedComponent } from './pages/articles-feed/articles-feed.component';
+import { ArticlesSortedComponent } from './pages/articles-sorted/articles-sorted.component';
+import { LicksFeedComponent } from './pages/licks-feed/licks-feed.component';
+import { LicksSortedComponent } from './pages/licks-sorted/licks-sorted.component';
+import { LickComponent } from './pages/lick/lick.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +48,14 @@ import { LessonsSortedComponent } from './pages/lessons-sorted/lessons-sorted.co
     LessonsFeedComponent,
     LessonComponent,
     LessonsSortedComponent,
-
+    AccountComponent,
+    AdminPanelComponent,
+    AdsBarComponent,
+    ArticlesFeedComponent,
+    ArticlesSortedComponent,
+    LicksFeedComponent,
+    LicksSortedComponent,
+    LickComponent
   ],
   imports: [
     BrowserModule,

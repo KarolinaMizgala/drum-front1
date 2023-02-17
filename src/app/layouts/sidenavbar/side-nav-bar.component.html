@@ -80,28 +80,34 @@
                   <span class="link-name">Home</span>
                </a>
             </li>
-            <li class="nav-links" routerLink="">
+            <li *ngIf="logged" class="nav-links" routerLink="/articles">
                <a >
                   <i class="uil uil-newspaper icon"></i>
                   <span class="link-name">Artykuły</span>
                </a>
             </li>
-            <li class="nav-links" routerLink="/lessons">
+            <li *ngIf="logged" class="nav-links" routerLink="/lessons">
                <a>
                   <i class="uil uil-book-open icon"></i>
                   <span class="link-name">Lekcje</span>
                </a>
             </li>
-            <li class="nav-links" routerLink="">
+            <li *ngIf="logged" class="nav-links" routerLink="/licks">
                <a>
                   <i class="uil uil-music icon"></i>
                   <span class="link-name">Zagrywki</span>
                </a>
             </li>
-            <li class="nav-links" routerLink="">
+            <li *ngIf="logged" class="nav-links" routerLink="/account">
                <a>
                   <i class="uil uil-user icon"></i>
                   <span class="link-name">Moje konto</span>
+               </a>
+            </li>
+            <li *ngIf="usertype === adminString && logged" class="nav-links" routerLink="/admin-panel">
+               <a>
+                  <i class="uil uil-user icon"></i>
+                  <span class="link-name">Panel admina</span>
                </a>
             </li>
          </ul>

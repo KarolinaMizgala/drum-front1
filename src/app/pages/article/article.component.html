@@ -1,0 +1,29 @@
+<div class="hero">
+    <ng-container class="section" *ngFor="let article of articles">
+        <div class="container" *ngIf="[article_ID]==article.id">
+       <div class="category">ARTYKUŁY<span class="dot"> · </span>{{article.category}}</div>
+            <div class="title">{{article.title}}</div>
+        <div class="subtitle">{{article.content}}</div>
+        <div class="author">Autor:&nbsp; {{article.author}}</div>
+        <div class="date">Upublikowano:&nbsp; {{article.date}}</div>
+
+    </div>
+    </ng-container>
+</div>
+<main id="main" class="main">
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <div class="card" *ngFor="let article of articles">
+
+                    <div class="card-body" *ngIf="[article_ID]==article.id">
+                        
+                             <img *ngFor="let attachment of article.attachments" class="center" src="https://light.one.pl/articleAttachment/{{attachment}} ">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+    
+</main>

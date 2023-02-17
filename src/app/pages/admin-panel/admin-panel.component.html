@@ -1,0 +1,81 @@
+
+<figure class="image is-fullwidth">
+    
+    <img src="assets/baner.png">
+  </figure>
+  
+<main id="main" class="main">
+
+
+
+
+  <section class="section">
+            <label for="" class="label">Użytkownicy</label>
+    </section>
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="card" *ngFor="let user of users">
+            <div class="card-body">
+              
+              <h2 class="title is-2"> {{user}}</h2>
+              
+              <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
+                Zbanuj użytkownika
+              </a>
+              <a *ngIf="username != user" class="button is-light" (click)="makeAdmin(user)">
+                Mianuj użytkownika adminem
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+        <label for="" class="label">Profesjonaliści oczekujący na weryfikację</label>
+        </section>
+        <section class="section">
+          <div class="columns">
+            <div class="column">
+              <div class="card" *ngFor="let user of unverifiedPro">
+                <div class="card-body">
+                  
+                  <h2 class="title is-2"> {{user}}</h2>
+        
+                  <a class="button is-light" (click)="verifyPro(user)">
+                    Weryfikuj profesjonalistę
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+    <section class="section">
+<label for="" class="label">Zbanowani użytkownicy</label>
+</section>
+<section class="section">
+  <div class="columns">
+    <div class="column">
+      <div class="card" *ngFor="let user of bannedUsers">
+        <div class="card-body">
+          
+          <h2 class="title is-2"> {{user}}</h2>
+
+          <a class="button is-light" (click)="unbanUser(user)">
+            Odbanuj użytkownika
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+</main>
