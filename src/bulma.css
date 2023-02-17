@@ -4219,10 +4219,13 @@ fieldset[disabled] .select select:hover {
   height: 100%;
   left: 0;
   opacity: 0;
-  outline: none;
   position: absolute;
   top: 0;
   width: 100%;
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .file-cta,
