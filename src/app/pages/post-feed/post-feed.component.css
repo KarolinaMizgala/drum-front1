@@ -8,11 +8,139 @@
     text-align: top;
   }
   .section {
-    padding-right: 250px;
+    padding-right: 200px;
+    padding-top: 0px;
   }
 
   img{
 
 margin-top: 60px;
 }
+.write-post-container
+{
+  width: 100%;
+  background-color: white;
+  border-radius: 6px;
+  padding: 20px;
+  columns: #626262;
+}
+.user-profile{
+display: flex;
+align-items: center;
+
+}
+.user-profile .icon-profile{
+
+
+  height: 45px;
+  width: 45px;
+  background-color: #be68d4;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+}
+.user-profile p{
   
+padding-left: 10px;
+  margin-bottom: -5px;
+  font-weight: 500;
+  color: #626262;
+  font-size: 20px;
+}
+.user-profile small{
+  
+  padding-left: 10px;
+    font-size: 16px;
+    color: #626262;
+  }
+.post-input-container
+{
+  padding-left: 55px;
+  padding-top: 20px;
+ 
+}
+.post-input-container textarea{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  resize: none;
+  text-align: inherit;
+
+}
+.add-post-links{
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+}
+.post-input-container .add-post-links {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #626262;
+  margin-right: 20px;
+  font-size: 13px;
+
+}
+ .file-label input
+{
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+}
+.add-post-links a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #626262;
+  margin-right: 30px;
+  font-size: 13px;
+
+}
+
+.add-post-links button{
+  text-decoration: none;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 30px;
+  font-size: 13px;
+
+}
+select{
+  outline: none;
+  border-color: white;
+  background-color: var(--select-arrow);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #626262;
+  
+}
+.post-container{
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  color: #626262;
+  margin: 20px 0;
+}
+.post-container span{
+  font-size: 13px;
+  color: #9a9a9a;
+
+}
+.post-container h1{
+  font-size: 24px;
+  color: #626262;
+
+}
+.post-text{
+  font-size: 16px;
+  color: #626262;
+  margin: 15px 0;
+
+}

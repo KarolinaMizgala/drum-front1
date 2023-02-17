@@ -1,17 +1,20 @@
-
-  <figure class="image is-fullwidth">
-    <img src="assets/baner.png">
-  </figure>
+<figure class="image is-fullwidth">
+  <img src="assets/baner.png">
+</figure>
 <main id="main" class="main">
 
 
 
 
   <section class="section">
-   
-      <div class="card">
+
+    <!-- <div class="card">
         <div class="card-body">
-          <div class="field">
+          <div class="write-post-container">
+            <div  class="uil uil-edit icon"></div>
+            <div class="user-name">
+              <p>User Name</p>
+              <small>Public</small>
             <label for="" class="label">Utwórz post</label>
            
             <form [formGroup]="postForm" (ngSubmit)="createPost()">
@@ -35,36 +38,135 @@
               </nav>
 
             </form>
+            </div>
+         
           </div>
         </div>
       </div>
-   
-    </section>
-    <section class="section">
-      <div class="columns">
-        <div class="column">
-          <div class="card" *ngFor="let post of posts">
-            <div class="card-body">
-              
-              <h2 class="title is-2"> {{post.title}}</h2>
+    -->
+    <div class="card">
+      <form [formGroup]="postForm" (ngSubmit)="createPost()">
+        <div class="write-post-container">
+          <div class="user-profile">
+            <i class="uil uil-edit fa-xl icon-profile"></i>
+            <div>
+              <p>Jadzia Burak</p>
 
-              <p>{{post.content}}</p>
-              <br>
-              <img  width="50%" height="50%" src="https://light.one.pl/postAttachment/{{post.attachment}}" />
+              <small> <select>
+                  <option>Publiczny</option>
+                  <option>Prywatny</option>
+                </select></small>
 
-              <h2 class="subtitle is-6">
-                @{{post.author}} · {{post.date |date:  "dd MMM y HH:mm" }}
-              </h2>
-              <a *ngIf="post.author === username" class="button is-light" (click)="deletePost(post.id)">
-                Usuń post
-              </a>
             </div>
           </div>
+
+
+          <div class="post-input-container">
+            <textarea formControlName="title" type="text" rows="2" placeholder="Dodaj tytuł posta"></textarea>
+            <textarea formControlName="text" type="text" rows="3" placeholder="Dodaj treść posta"></textarea>
+
+            <div class="add-post-links">
+
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input"formControlName="attachment" type="file" name="resume" accept=".png">
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-images fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Zdjecie
+                      </span>
+
+                    </a>
+                  </div>
+
+
+                </label>
+
+              </div>
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="resume" accept=".mp3">
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-music fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Dźwięk
+                      </span>
+                    </a>
+                  </div>
+
+                </label>
+
+              </div>
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="resume" accept=".mp4">
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-video fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Film
+                      </span>
+                    </a>
+                  </div>
+
+                </label>
+
+              </div>
+              <div class="file">
+                <label class="file-label">
+                  <input style="border:none" class="file-input" type="file" name="resume" accept=".pdf" />
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-file-upload-alt fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Dokument
+                      </span>
+                    </a>
+                  </div>
+
+                </label>
+
+              </div>
+              <button type="submit" class="button is-primary">Dodaj</button>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+
+  </section>
+  <section class="section">
+    <div class="columns">
+      <div class="column">
+        <div class="card" *ngFor="let post of posts">
+          <div class="post-container">
+
+            <h1> {{post.title}}</h1>
+            <span> @{{post.author}}</span>
+     
+            <iframe width="100%" height="500" style="overflow: hidden;" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allowfullscreen>></iframe>
+            <p class="post-text">{{post.content}}</p>
+            <span >
+              {{ post.date | date:'dd MM yyyy - HH:mm'}}
+            </span>
+            <a *ngIf="post.author === username" class="button is-light" (click)="deletePost(post.id)">
+              Usuń post
+            </a>
+          </div>
         </div>
       </div>
+    </div>
 
 
 
-    </section>
+  </section>
 
 </main>
