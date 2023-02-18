@@ -1,6 +1,6 @@
 <div class="hero">
     <ng-container class="section" *ngFor="let lesson of lessons">
-        <div class="container" *ngIf="[lesson_ID]==lesson.id">
+        <div class="container has-text-centered" *ngIf="[lesson_ID]==lesson.id">
        <div class="category">LEKCJE<span class="dot"> · </span>{{lesson.category}}</div>
             <div class="title">{{lesson.title}}</div>
         <div class="subtitle">{{lesson.content}}</div>
@@ -13,13 +13,15 @@
 <main id="main" class="main">
     <section class="section">
         <div class="columns">
-            <div class="column">
-                <div class="card" *ngFor="let lesson of lessons">
+            <div class="column is-centered">
+                <div class="card has-text-centered" *ngFor="let lesson of lessons">
 
-                    <div class="card-body" *ngIf="[lesson_ID]==lesson.id">
+                    <div class="card-body " *ngIf="[lesson_ID]==lesson.id">
                         
-                             <img *ngFor="let attachment of lesson.attachments" class="center" src="https://light.one.pl/lessonAttachment/{{attachment}} ">
-                        </div>
+                             <img *ngFor="let attachment of lesson.attachments" class="center" src="https://i.guim.co.uk/img/media/13223421bfc4bd1c8cee8945a6fc446adc3e83da/0_193_2879_1727/master/2879.jpg?width=620&quality=45&dpr=2&s=none">
+                       <p>sadsadasdsadasdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                       
+                            </div>
                     </div>
 
                 </div>

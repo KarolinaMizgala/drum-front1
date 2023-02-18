@@ -1,4 +1,7 @@
-
+#main
+{
+    padding-right: 0;
+}
  .tiles{
 padding-left: 20px;
 padding-right: 20px;
@@ -11,8 +14,7 @@ justify-items: center;
   padding: 1rem;
 }
 .columns {
-    /* display: flex; */
-    flex-wrap: wrap; 
+   float:left;
   }
 .subtitle
 {
@@ -24,8 +26,8 @@ justify-items: center;
 padding: 60px 0;
 padding-left: 20px;
 padding-right: 10px;
-justify-items: center;
-display: flex;
+
+display:block;
   flex-wrap: wrap;
   overflow: hidden;
 }
@@ -38,7 +40,8 @@ display: flex;
     position: relative;
     top: 0px;
     height: 450px;
-    width: 250px;
+    width: 350px;
+    
 }
 .date{
     position: absolute;
@@ -85,6 +88,8 @@ font-weight: 700;
 margin: 18px 0 10px;
 cursor: pointer;
 transition: all .3s ease;
+right: auto;
+left: auto;
 
 }
 .lesson-card h2:hover{
@@ -130,4 +135,120 @@ float: auto;
     padding: 60px 0;
 padding-left: 20px;
 padding-right: 10px;
+}
+.write-lesson-container
+{
+  
+  background-color: white;
+  border-radius: 6px;
+  padding: 20px;
+
+  columns: #626262;
+}
+.card {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+}
+.user-profile{
+display: flex;
+align-items: center;
+
+}
+.user-profile .icon-profile{
+
+
+  height: 45px;
+  width: 45px;
+  background-color: #be68d4;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+}
+.user-profile p{
+  
+padding-left: 10px;
+  margin-bottom: -5px;
+  font-weight: 500;
+  color: #626262;
+  font-size: 20px;
+}
+.user-profile small{
+  
+  padding-left: 10px;
+    font-size: 16px;
+    color: #626262;
+  }
+.lesson-input-container
+{
+  padding-left: 55px;
+  padding-top: 20px;
+ 
+}
+.lesson-input-container textarea{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  resize: none;
+  text-align: inherit;
+
+}
+.add-lesson-links{
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+}
+.lesson-input-container .add-lesson-links {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #626262;
+  margin-right: 20px;
+  font-size: 13px;
+
+}
+ .file-label input
+{
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+}
+.add-lesson-links a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #626262;
+  margin-right: 30px;
+  font-size: 13px;
+
+}
+
+button{
+  text-decoration: none;
+  display: flex;
+  
+ align-items: center;
+
+  font-size: 13px;
+float: right;
+
+
+}
+select{
+  outline: none;
+  border-color: white;
+  background-color: var(--select-arrow);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #626262;
+  font-size: 13px;
+  
 }

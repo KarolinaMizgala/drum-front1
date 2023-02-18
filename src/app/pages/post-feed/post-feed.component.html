@@ -1,6 +1,5 @@
-<figure class="image is-fullwidth">
-  <img src="assets/baner.png">
-</figure>
+<div class="hero">
+  </div>
 <main id="main" class="main">
 
 
@@ -155,7 +154,7 @@
             <iframe width="100%" height="500" style="overflow: hidden;" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allowfullscreen>></iframe>
             <p class="post-text">{{post.content}}</p>
             <span >
-              {{ post.date | date:'dd MM yyyy - HH:mm'}}
+              {{ post.date | date:'dd.MM.yyyy - HH:mm'}}
             </span>
             <a *ngIf="post.author === username" class="button is-light" (click)="deletePost(post.id)">
               Usuń post
