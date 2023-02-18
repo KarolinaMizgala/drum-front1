@@ -52,9 +52,9 @@
             <div>
               <p>Jadzia Burak</p>
 
-              <small> <select>
-                  <option>Publiczny</option>
-                  <option>Prywatny</option>
+              <small> <select id="visibility">
+                  <option value="1">Publiczny</option>
+                  <option value="0">Prywatny</option>
                 </select></small>
 
             </div>
@@ -69,7 +69,7 @@
 
               <div class="file">
                 <label class="file-label">
-                  <input class="file-input"formControlName="attachment" type="file" name="resume" accept=".png">
+                  <input class="file-input"formControlName="attachment" id="selectAvatarPng" type="file" name="resume" accept=".png">
                   <div class="add-post-links">
                     <a> <span class="file-icon">
                         <i class="uil uil-images fa-lg"></i>
@@ -142,6 +142,22 @@
       </form>
     </div>
 
+    <div style="margin: 24px;">
+      <h2>Upload Image</h2>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img class="img" id="avatar" />
+        </div>
+        <div class="col">
+          <textarea id="textArea" rows="30" cols="50"></textarea>
+        </div>
+      </div>
+    </div>
+
   </section>
   <section class="section">
     <div class="columns">
@@ -152,7 +168,7 @@
             <h1> {{post.title}}</h1>
             <span> @{{post.author}}</span>
      
-            <iframe width="100%" height="500" style="overflow: hidden;" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allowfullscreen>></iframe>
+            <iframe width="100%" height="10%" style="overflow: hidden;" [src]='sanitizer.bypassSecurityTrustResourceUrl(backAddress+"postAttachment/"+post.attachment)' frameborder="0" allowfullscreen>></iframe>
             <p class="post-text">{{post.content}}</p>
             <span >
               {{ post.date | date:'dd MM yyyy - HH:mm'}}
