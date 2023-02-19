@@ -1,4 +1,4 @@
-.header nav {
+ nav {
   position: fixed;
   top: 0;
   left: 0px;
@@ -13,20 +13,20 @@
   z-index: 3;
 }
 
-.header .navbar-end i {
+ .navbar-end i {
   opacity: 0;
 
 }
 
 @media (max-width: 1199px) {
-  .header .navbar-end i {
+  .navbar-end i {
     opacity: 100;
     float: right;
 
   }
 }
 
-.header .sidebar-toggle {
+ .sidebar-toggle {
   font-size: 35px;
   color: #693fbd;
   cursor: pointer;
