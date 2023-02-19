@@ -5,9 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  loggedState = false;
+  loggedState = true;
 
   //public static backAddress = "https://light.one.pl/"
   public static backAddress = "http://localhost:25565/"
+
+  
+
   constructor() { }
 }

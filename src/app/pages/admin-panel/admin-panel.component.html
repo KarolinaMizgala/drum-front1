@@ -1,5 +1,5 @@
 
-<!-- <figure class="image is-fullwidth">
+<figure class="image is-fullwidth">
     
     <img src="assets/baner.png">
   </figure>
@@ -20,12 +20,14 @@
               
               <h2 class="title is-2"> {{user}}</h2>
               
+              <div class="user-buttons">
               <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
                 Zbanuj użytkownika
               </a>
               <a *ngIf="username != user" class="button is-light" (click)="makeAdmin(user)">
                 Mianuj użytkownika adminem
               </a>
+            </div>
               
             </div>
           </div>
@@ -78,4 +80,4 @@
 
 
 
-</main> -->
+</main>

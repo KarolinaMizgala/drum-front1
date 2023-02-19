@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: Document, private http: HttpClient, private service: LoginService) { }
   public users : any;
+
+  
   ngOnInit(): void {
     this.logged = this.service.loggedState
     if(this.logged)

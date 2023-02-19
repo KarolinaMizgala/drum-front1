@@ -58,7 +58,10 @@ export class PostFeedComponent implements OnInit{
     })
 
     
-    const inputPng = document.getElementById("selectAvatarPng") as HTMLInputElement
+    const inputPng1 = document.getElementById("selectAvatarPng1") as HTMLInputElement
+    const inputPng2 = document.getElementById("selectAvatarPng2") as HTMLInputElement
+    const inputPng3 = document.getElementById("selectAvatarPng3") as HTMLInputElement
+    const inputPng4 = document.getElementById("selectAvatarPng4") as HTMLInputElement
     const avatar = document.getElementById("avatar") as HTMLInputElement
     const textArea = document.getElementById("textArea") as HTMLInputElement
     
@@ -85,7 +88,16 @@ export class PostFeedComponent implements OnInit{
       this.base64 = base64;
     };
     
-    inputPng.addEventListener("change", (e) => {
+    inputPng1.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng2.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng3.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng4.addEventListener("change", (e) => {
       uploadImage(e);
     });
   }
@@ -95,6 +107,7 @@ export class PostFeedComponent implements OnInit{
         this.usertype = x.userType
       });
 
+    
     }
 
 
@@ -133,9 +146,16 @@ export class PostFeedComponent implements OnInit{
   createPost() :void {
     var visibility = document.getElementById("visibility") as HTMLInputElement
     var visibilityValue = visibility?.value
+    var data
 
-
-    let data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue, "image":this.base64};
+  if(this.base64==="")
+  {
+    data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue}
+  }
+  else
+  {
+    data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue, "image":this.base64};
+  }
     const res = fetch(LoginService.backAddress+"setPost", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
       this.afterCreatePost(x);

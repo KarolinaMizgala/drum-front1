@@ -10,9 +10,6 @@
   .section {
     padding-right: 200px;
     padding-top: 0px;
-    z-index: 2;
-    margin-top:-100px;
-    margin-bottom: 40px;
   }
 
   img{
@@ -99,7 +96,7 @@ padding-left: 10px;
 .add-post-links a {
   text-decoration: none;
   display: flex;
-  align-items:stretch;
+  align-items: center;
   color: #626262;
   margin-right: 30px;
   font-size: 13px;
@@ -109,7 +106,7 @@ padding-left: 10px;
 .add-post-links button{
   text-decoration: none;
   display: flex;
- 
+  align-items: flex-end;
   margin-right: 30px;
   font-size: 13px;
 
@@ -134,7 +131,7 @@ select{
 .post-container span{
   font-size: 13px;
   color: #9a9a9a;
-margin-bottom: 10px;
+
 }
 .post-container h1{
   font-size: 24px;
@@ -147,18 +144,83 @@ margin-bottom: 10px;
   margin: 15px 0;
 
 }
-iframe
-{
-  margin-top: 5px;
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.hero{
-  background-color: rgb(37, 37, 57, 0.70);
-  background-image: url("src/assets/1.png");
 
-  background-size: cover;
-  height: 250px;
-  background-blend-mode:multiply;
+#myImg:hover {opacity: 0.7;}
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
 
-  display: flex;
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
 }
