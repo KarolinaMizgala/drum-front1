@@ -4,7 +4,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms"
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
-
+import { Pipe, PipeTransform } from '@angular/core';
+    import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 interface Post {  
   id: Number;  
@@ -26,16 +27,21 @@ export class PostFeedComponent implements OnInit{
   username = ""
   usertype = "guest"
   empty = ""
+  slideIndex = 0;
+
+  base64 = ""
+  backAddress = ""
 
   public posts!: Post[];
   public postForm !: FormGroup;
 
   public myDate!: Date;
 
-  constructor(private _postService: PostService, private formBuilder : FormBuilder, private router:Router, private http: HttpClient, private service:LoginService) {}
-
+  constructor(private _postService: PostService, private formBuilder : FormBuilder, private router:Router, private http: HttpClient, private service:LoginService, public sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+
+    this.backAddress = LoginService.backAddress
     this.logged = this.service.loggedState
     this.getPosts();
     if(this.logged)
@@ -52,7 +58,48 @@ export class PostFeedComponent implements OnInit{
     })
 
     
-
+    const inputPng1 = document.getElementById("selectAvatarPng1") as HTMLInputElement
+    const inputPng2 = document.getElementById("selectAvatarPng2") as HTMLInputElement
+    const inputPng3 = document.getElementById("selectAvatarPng3") as HTMLInputElement
+    const inputPng4 = document.getElementById("selectAvatarPng4") as HTMLInputElement
+    const avatar = document.getElementById("avatar") as HTMLInputElement
+    const textArea = document.getElementById("textArea") as HTMLInputElement
+    
+    const convertBase64 = (file: Blob) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+    
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+    
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    };
+    
+    const uploadImage = async (event: any) => {
+      const file = event.target.files[0];
+      const base64 = await convertBase64(file) as string
+       avatar.src = base64;
+      textArea.innerText = base64;
+      this.base64 = base64;
+    };
+    
+    inputPng1.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng2.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng3.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng4.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
   }
     getUserType() :void{
       const res = fetch(LoginService.backAddress+"getUserType", {method: "GET", credentials: 'include'});
@@ -60,6 +107,7 @@ export class PostFeedComponent implements OnInit{
         this.usertype = x.userType
       });
 
+    
     }
 
 
@@ -96,7 +144,18 @@ export class PostFeedComponent implements OnInit{
 
 
   createPost() :void {
-    let data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": "1", "image":this.postForm.value.attachment};
+    var visibility = document.getElementById("visibility") as HTMLInputElement
+    var visibilityValue = visibility?.value
+    var data
+
+  if(this.base64==="")
+  {
+    data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue}
+  }
+  else
+  {
+    data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue, "image":this.base64};
+  }
     const res = fetch(LoginService.backAddress+"setPost", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
       this.afterCreatePost(x);
@@ -115,7 +174,51 @@ export class PostFeedComponent implements OnInit{
       //błąd przy dodawaniu posta
     }
   }
-
+  openModal() {
+    (<HTMLInputElement> document.getElementById('imgModal')).style.display = "block"
+   }
+   closeModal() {
+    (<HTMLInputElement> document.getElementById('imgModal')).style.display = "none";
+   }
+   plusSlides(n: number) {
+    this.showSlides(this.slideIndex += n);
+   }
+   currentSlide(n: number) {
+    this.showSlides(this.slideIndex = n);
+   }
+   
+   showSlides(n: any) {
+    let i;
+    const slides = document.getElementsByClassName("img-slides") as HTMLCollectionOf < HTMLElement > ;
+    const dots = document.getElementsByClassName("images") as HTMLCollectionOf < HTMLElement > ;
+    if (n > slides.length) {
+     this.slideIndex = 1
+    }
+    if (n < 1) {
+     this.slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+     slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[this.slideIndex - 1].style.display = "block";
+    if (dots && dots.length > 0) {
+     dots[this.slideIndex - 1].className += " active";
+    }
+   }
 
 }
 
+@Pipe({
+  name: 'safe'
+})
+export class SafePipe implements PipeTransform {
+
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+}

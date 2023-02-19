@@ -150,114 +150,102 @@
   <section class="lesson">
     <div class="title">Dodaj nową lekcje</div>
     <br><br>
-  <div class="card">
-    <form  [formGroup]="lessonsForm" (ngSubmit)="createLesson()">
-      <div class="write-lesson-container">
-        <div class="user-profile">
-          <i class="uil uil-edit fa-xl icon-profile"></i>
-          <div>
-            <p>Jadzia Burak</p>
+  
+    
+    <div class="card">
+      <form [formGroup]="lessonsForm" (ngSubmit)="createLesson()">
+        <div class="write-post-container">
+          <div class="user-profile">
+            <i class="uil uil-edit fa-xl icon-profile"></i>
+            <div>
+              <p>Jadzia Burak</p>
 
-            
 
+            </div>
           </div>
+
+
+          <div class="post-input-container">
+            <textarea formControlName="title" type="text" rows="2" placeholder="Dodaj tytuł lekcji"></textarea>
+            <textarea formControlName="desc" type="text" rows="3" placeholder="Dodaj opis lekcji"></textarea>
+            <textarea formControlName="text" type="text" rows="3" placeholder="Dodaj treść lekcji"></textarea>
+
+            <div class="add-post-links">
+
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" formControlName="attachment" id="selectAvatarPng1" type="file" name="resume" accept=".png">
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-images fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Zdjecie
+                      </span>
+
+                    </a>
+                  </div>
+
+
+                </label>
+
+              </div>
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="resume" id="selectAvatarPng2" accept=".mp3">
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-music fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Dźwięk
+                      </span>
+                    </a>
+                  </div>
+
+                </label>
+
+              </div>
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" id="selectAvatarPng3" name="resume" accept=".mp4">
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-video fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Film
+                      </span>
+                    </a>
+                  </div>
+
+                </label>
+
+              </div>
+              <div class="file">
+                <label class="file-label">
+                  <input style="border:none" class="file-input" id="selectAvatarPng4" type="file" name="resume" accept=".pdf" />
+                  <div class="add-post-links">
+                    <a> <span class="file-icon">
+                        <i class="uil uil-file-upload-alt fa-lg"></i>
+                      </span>
+                      <span class="file-label">
+                        Dokument
+                      </span>
+                    </a>
+                  </div>
+
+                </label>
+
+              </div>
+              <button type="submit" class="button is-primary">Dodaj</button>
+            </div>
+          </div>
+
         </div>
 
-
-        <div class="lesson-input-container">
-          
-          <label class="label">Tytuł</label>
-          <textarea formControlName="title" type="text" rows="2" placeholder="Dodaj tytuł lekcji"></textarea>
-          <label class="label">Opis</label>
-          <textarea formControlName="text" type="text" rows="2" placeholder="Dodaj opis lekcji"></textarea>
-          <label class="label">Treść</label>
-          <textarea formControlName="text" type="text" rows="2" placeholder="Dodaj treść lekcji"></textarea>
-          <label class="label">Kategoria</label>
-          <select id="category">
-            <option>Wybierz kategorię...</option>
-            <option>Piosenki</option>
-            <option>Techniki</option>
-            <option>O sprzęcie</option>
-            <option>Zagrywki</option>
-            <option>Teoria</option>
-          </select>
-          <div class="add-lesson-links">
-
-            <div class="file">
-              <label class="file-label">
-                <input class="file-input"formControlName="attachment" type="file" name="resume" accept=".png">
-                <div class="add-lesson-links">
-                  <a> <span class="file-icon">
-                      <i class="uil uil-images fa-lg"></i>
-                    </span>
-                    <span class="file-label">
-                      Zdjecie
-                    </span>
-
-                  </a>
-                </div>
-
-
-              </label>
-
-            </div>
-            <div class="file">
-              <label class="file-label">
-                <input class="file-input" type="file" name="resume" accept=".mp3">
-                <div class="add-lesson-links">
-                  <a> <span class="file-icon">
-                      <i class="uil uil-music fa-lg"></i>
-                    </span>
-                    <span class="file-label">
-                      Dźwięk
-                    </span>
-                  </a>
-                </div>
-
-              </label>
-
-            </div>
-            <div class="file">
-              <label class="file-label">
-                <input class="file-input" type="file" name="resume" accept=".mp4">
-                <div class="add-lesson-links">
-                  <a> <span class="file-icon">
-                      <i class="uil uil-video fa-lg"></i>
-                    </span>
-                    <span class="file-label">
-                      Film
-                    </span>
-                  </a>
-                </div>
-
-              </label>
-
-            </div>
-            <div class="file">
-              <label class="file-label">
-                <input style="border:none" class="file-input" type="file" name="resume" accept=".pdf" />
-                <div class="add-lesson-links">
-                  <a> <span class="file-icon">
-                      <i class="uil uil-file-upload-alt fa-lg"></i>
-                    </span>
-                    <span class="file-label">
-                      Dokument
-                    </span>
-                  </a>
-                </div>
-
-              </label>
-            </div>
-            <button type="submit" class="button is-primary">Dodaj</button>
-          </div>
-         
-        </div>
-        
-
-      </div>
-
-    </form>
-  </div>
+      </form>
+    </div>
 
 </section>
   

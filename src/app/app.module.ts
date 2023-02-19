@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { PostFeedComponent } from './pages/post-feed/post-feed.component';
+import { PostFeedComponent, SafePipe } from './pages/post-feed/post-feed.component';
 import { PostService } from './services/post.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { Router, RouterModule, Routes } from '@angular/router';
@@ -55,7 +55,8 @@ import { LickComponent } from './pages/lick/lick.component';
     ArticlesSortedComponent,
     LicksFeedComponent,
     LicksSortedComponent,
-    LickComponent
+    LickComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
