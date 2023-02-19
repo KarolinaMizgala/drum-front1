@@ -68,20 +68,20 @@
          </div>
 
       </div>
-      
+
       <i (click)="sidebarToggle()" class="uil uil-arrow-right toggle"></i>
    </header>
-<div class="menu-bar">
-   <div class="menu">
-      <ul class="menu-links">
+   <div class="menu-bar">
+      <div class="menu">
+         <ul class="menu-links">
             <li class="nav-links" routerLink="/post-feed">
-               <a >
+               <a>
                   <i class="uil uil-estate icon"></i>
                   <span class="link-name">Home</span>
                </a>
             </li>
             <li *ngIf="logged" class="nav-links" routerLink="/articles">
-               <a >
+               <a>
                   <i class="uil uil-newspaper icon"></i>
                   <span class="link-name">Artykuły</span>
                </a>
@@ -113,14 +113,14 @@
          </ul>
 
 
- 
-   </div>
-   <div *ngIf = "logged" class="bottom-content">
-      <li class="nav-links" (click)="logout()">
+
+      </div>
+      <div *ngIf="logged" class="bottom-content">
+         <li class="nav-links" (click)="logout()">
             <i class="uil uil-signout icon"></i>
             <span class="link-name">Wyloguj się</span>
-      </li>
+         </li>
 
+      </div>
    </div>
-</div>
 </nav>

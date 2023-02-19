@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   sidebarToggle()
   {
     //toggle sidebar function
-   this.document.body./*querySelector(".sidebar")?.*/classList.toggle('close');
+   this.document.body.classList.toggle('close');
   }
   
 

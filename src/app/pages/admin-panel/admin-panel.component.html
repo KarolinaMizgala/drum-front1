@@ -1,83 +1,157 @@
 
-<figure class="image is-fullwidth">
-    
-    <img src="assets/baner.png">
-  </figure>
-  
+
 <main id="main" class="main">
 
+  <div class="dash-content">
 
+    <div class="title">
+      <span class="text">Panel admina</span>
 
-
-  <section class="section">
-            <label for="" class="label">Użytkownicy</label>
-    </section>
-    <section class="section">
-      <div class="columns">
-        <div class="column">
-          <div class="card" *ngFor="let user of users">
-            <div class="card-body">
-              
-              <h2 class="title is-2"> {{user}}</h2>
-              
-              <div class="user-buttons">
-              <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
-                Zbanuj użytkownika
-              </a>
-              <a *ngIf="username != user" class="button is-light" (click)="makeAdmin(user)">
-                Mianuj użytkownika adminem
-              </a>
-            </div>
-              
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="boxes">
+      <div class="box">
+        <i class="uil uil-users-alt icon"></i>
+        <span class="text">Liczba użytkowników</span>
+        <span class="number">89087</span>
       </div>
-    </section>
+      <div class="box">
+        <i class="uil uil-user-plus icon"></i>
+        <span class="text">Liczba profesjonalistów</span>
+        <span class="number">343</span>
+      </div>
+      <div class="box">
+        <i class="uil uil-user-check icon"></i>
+        <span class="text">Liczba oczekujących na weryfikacje</span>
+        <span class="number">3</span>
+      </div>
 
-    <section class="section">
-        <label for="" class="label">Profesjonaliści oczekujący na weryfikację</label>
-        </section>
-        <section class="section">
-          <div class="columns">
-            <div class="column">
-              <div class="card" *ngFor="let user of unverifiedPro">
-                <div class="card-body">
-                  
-                  <h2 class="title is-2"> {{user}}</h2>
-        
-                  <a class="button is-light" (click)="verifyPro(user)">
-                    Weryfikuj profesjonalistę
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    </div>
 
-    <section class="section">
-<label for="" class="label">Zbanowani użytkownicy</label>
-</section>
-<section class="section">
-  <div class="columns">
-    <div class="column">
-      <div class="card" *ngFor="let user of bannedUsers">
-        <div class="card-body">
-          
-          <h2 class="title is-2"> {{user}}</h2>
-
-          <a class="button is-light" (click)="unbanUser(user)">
-            Odbanuj użytkownika
-          </a>
-        </div>
+    <div class="activity">
+      <div class="title">
+        <i class="uil uil-users-alt icon"></i>
+        <span class="text">Użytkownicy</span>
       </div>
     </div>
+
+    <div class="card" >
+    <div class="board">
+      <table width="100%">
+        <thead>
+          <tr>
+            <td>Nazwa</td>
+            <td>Typ</td>
+            <td>Edytuj</td>
+            <td>Zablokuj</td>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of users" >
+          <tr>
+            <td class="users">
+              <p>{{user}}</p>
+            </td>
+
+            <td class="type">
+              <p class="pro">Profesjonalista</p>
+              <p class="ama">Amator</p>
+            </td>
+            <td class="edit">
+              <a *ngIf="username != user" class="button is-light" (click)="makeAdmin(user)">
+                Mianuj adminem
+              </a>
+            </td>
+            <td class="ban">
+              <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
+               Zablokuj
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
-</section>
+  <div class="activity">
+    <div class="title">
+      <i class="uil uil-user-check icon"></i>
+      <span class="text">Profesjonaliści oczekujący na weryfikację</span>
+    </div>
+  </div>
 
+  <div class="card" >
+  <div class="board">
+    <table width="100%">
+      <thead>
+        <tr>
+          <td>Nazwa</td>
+          <td>Typ</td>
+          <td>Edytuj</td>
+          <td>Zablokuj</td>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of unverifiedPro" >
+        <tr>
+          <td class="users">
+            <p>{{user}}</p>
+          </td>
 
+          <td class="status">
+            <p class="ama">Niezweryfikowany</p>
+          </td>
+          <td class="edit">
+            <a class="button is-light" (click)="verifyPro(user)">
+              Zweryfikuj
+            </a>
+          </td>
+          <td class="ban">
+            <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
+             Zablokuj
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
+  </div>
+</div>
+<div class="activity">
+  <div class="title">
+    <i class="uil uil-user-check icon"></i>
+    <span class="text">Użytkownicy zablokowani</span>
+  </div>
+</div>
 
+<div class="card" >
+<div class="board">
+  <table width="100%">
+    <thead>
+      <tr>
+        <td>Nazwa</td>
+        <td>Typ</td>
+        <td>Odblokuj</td>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of bannedUsers" >
+      <tr>
+        <td class="users">
+          <p>{{user}}</p>
+        </td>
 
+        <td class="status">
+          <p class="ama">Zablokowany</p>
+        </td>
+        <td class="ban">
+          <a class="button is-light" (click)="unbanUser(user)">
+            Odblokuj
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+</div>
 
 </main>
+
