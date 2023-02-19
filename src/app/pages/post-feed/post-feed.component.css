@@ -1,22 +1,22 @@
-.post-feed .card-body {
+.card-body {
 	padding: 20px 20px 20px 20px;
   }
-  .post-feed .label{
+  .label{
     font-size: 40px;
   }
-  .post-feed .input{
+  .input{
     text-align: top;
   }
-  .post-feed.section {
+  .section {
     padding-right: 200px;
     padding-top: 0px;
   }
 
-  .post-feed img{
+  img{
 
 margin-top: 60px;
 }
-.post-feed .write-post-container
+.write-post-container
 {
   width: 100%;
   background-color: white;
@@ -24,12 +24,12 @@ margin-top: 60px;
   padding: 20px;
   columns: #626262;
 }
-.post-feed .user-profile{
+.user-profile{
 display: flex;
 align-items: center;
 
 }
-.post-feed .user-profile .icon-profile{
+.user-profile .icon-profile{
 
 
   height: 45px;
@@ -41,7 +41,7 @@ align-items: center;
   border-radius: 50%;
   color: #fff;
 }
-.post-feed .user-profile p{
+.user-profile p{
   
 padding-left: 10px;
   margin-bottom: -5px;
@@ -49,19 +49,19 @@ padding-left: 10px;
   color: #626262;
   font-size: 20px;
 }
-.post-feed .user-profile small{
+.user-profile small{
   
   padding-left: 10px;
     font-size: 16px;
     color: #626262;
   }
-  .post-feed .post-input-container
+.post-input-container
 {
   padding-left: 55px;
   padding-top: 20px;
  
 }
-.post-feed .post-input-container textarea{
+.post-input-container textarea{
   width: 100%;
   border: 0;
   outline: 0;
@@ -71,12 +71,12 @@ padding-left: 10px;
   text-align: inherit;
 
 }
-.post-feed .add-post-links{
+.add-post-links{
   display: flex;
   margin-top: 10px;
   align-items: center;
 }
-.post-feed .post-input-container .add-post-links {
+.post-input-container .add-post-links {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@ padding-left: 10px;
   font-size: 13px;
 
 }
-.post-feed .file-label input
+ .file-label input
 {
   outline: none;
   border-color: inherit;
@@ -93,7 +93,7 @@ padding-left: 10px;
   box-shadow: none;
 
 }
-.post-feed .add-post-links a {
+.add-post-links a {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -103,7 +103,7 @@ padding-left: 10px;
 
 }
 
-.post-feed .add-post-links button{
+.add-post-links button{
   text-decoration: none;
   display: flex;
   align-items: flex-end;
@@ -111,7 +111,7 @@ padding-left: 10px;
   font-size: 13px;
 
 }
-.post-feed select{
+select{
   outline: none;
   border-color: white;
   background-color: var(--select-arrow);
@@ -120,7 +120,7 @@ padding-left: 10px;
   color: #626262;
   
 }
-.post-feed .post-container{
+.post-container{
   width: 100%;
   background: #fff;
   border-radius: 6px;
@@ -128,31 +128,22 @@ padding-left: 10px;
   color: #626262;
   margin: 20px 0;
 }
-.post-feed .post-container span{
+.post-container span{
   font-size: 13px;
   color: #9a9a9a;
 
 }
-.post-feed .post-container h1{
+.post-container h1{
   font-size: 24px;
   color: #626262;
 
 }
-.post-feed .post-text{
+.post-text{
   font-size: 16px;
   color: #626262;
   margin: 15px 0;
 
 }
-
-.post-feed iframe
-{
-  margin-top: 5px;
-}
-.post-feed .hero{
-  background-color: rgb(37, 37, 57, 0.70);
-  background-image: url("src/assets/1.png");
-
 
 /* Style the Image Used to Trigger the Modal */
 #myImg {

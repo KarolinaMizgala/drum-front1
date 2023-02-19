@@ -1,61 +1,93 @@
-import { AfterViewInit, Component, NgModule } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LessonService } from 'src/app/services/lesson.service';
-import { LoginService } from 'src/app/services/login.service';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-import { toArray } from 'rxjs';
+import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
+import { Pipe, PipeTransform } from '@angular/core';
+    import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
+interface Lesson {  
+  id: Number;  
+  title: String;
+  desc: String; 
+  content: String;  
+  author: String;  
+  date: Date;
+  attachment: String;
+}  
+ 
 @Component({
-  selector: 'app-lessons',
+  selector: 'app-lessons-feed',
   templateUrl: './lessons-feed.component.html',
   styleUrls: ['./lessons-feed.component.css']
 })
 
-export class LessonsFeedComponent  {
-  
+
+export class LessonsFeedComponent implements OnInit{
+
   logged = false
+  username = ""
   usertype = "guest"
+  empty = ""
+  slideIndex = 0;
+
+  base64 = ""
+  backAddress = ""
+  base64Array: string[] = []
+
   proString = "pro"
   adminString = "admin"
 
-  pngString=""
-
-  base64Array: string[] = [];
-  filenames: string[] = [];
-
-  public lessons: any;
+  public lessons!: Lesson[];
+  public lessonsThree!: Lesson[];
+  public postForm !: FormGroup;
   public lessonsForm! : FormGroup;
   private lesson_ID: any;
-  private lessons_category: string | undefined;
-  public myDate!:Date;
-  
-  constructor(private _lessonService: LessonService,private formBuilder : FormBuilder, private http: HttpClient, private router:Router, private service: LoginService) {}
+
+
+  lessons_category: string | undefined;
+  public myDate!: Date;
+
+  constructor(private _postService: PostService, private formBuilder : FormBuilder, private router:Router, private http: HttpClient, private service:LoginService, public sanitizer: DomSanitizer) {}
+
   ngOnInit(): void {
+
+    this.backAddress = LoginService.backAddress
     this.logged = this.service.loggedState
+    this.getLessons();
+    //this.lessonsThree = this.lessons.slice(0,3)
 
-    if(!this.logged)
-    {
-      this.router.navigate(["login"])
-    }
+      this.getUserName()
+      this.getUserType()
 
-    this.getUserType()
-    this.getLessons()
-    this.lessonsForm = this.formBuilder.group({
+    this.postForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required]),
-      desc: new FormControl('', [Validators.required]),
       text: new FormControl('', [Validators.required]),
-      category: new FormControl('', [Validators.required]),
+      attachment:  [''],
+      visible: new FormControl('', [Validators.required]),
       date: ['']
     })
+
     
-    const inputPng1 = document.getElementById("selectAvatarPng1") as HTMLInputElement
-    const inputPng2 = document.getElementById("selectAvatarPng2") as HTMLInputElement
-    const inputPng3 = document.getElementById("selectAvatarPng3") as HTMLInputElement
-    const inputPng4 = document.getElementById("selectAvatarPng4") as HTMLInputElement
-    const avatar = document.getElementById("avatar") as HTMLInputElement
-    const textArea = document.getElementById("textArea") as HTMLInputElement
+    var inputPng1 = document.getElementById("selectAvatarPng1") as HTMLInputElement
+    var inputPng2 = document.getElementById("selectAvatarPng2") as HTMLInputElement
+    var inputPng3 = document.getElementById("selectAvatarPng3") as HTMLInputElement
+    var inputPng4 = document.getElementById("selectAvatarPng4") as HTMLInputElement
+
+
+    inputPng1.addEventListener("change", (e) => {
+     uploadImage(e);
+    });
+    inputPng2.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng3.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
+    inputPng4.addEventListener("change", (e) => {
+      uploadImage(e);
+    });
     
     const convertBase64 = (file: Blob) => {
       return new Promise((resolve, reject) => {
@@ -75,62 +107,75 @@ export class LessonsFeedComponent  {
     const uploadImage = async (event: any) => {
       const file = event.target.files[0];
       const base64 = await convertBase64(file) as string
-       avatar.src = base64;
-      textArea.innerText = base64;
-      this.base64Array.push(base64)
-
-      var fullPath = event.target.value
-      var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-      var filename = fullPath.substring(startIndex);
-      this.filenames.push(filename);
-      textArea.innerText = ""
-      this.filenames.forEach(element => {
-        textArea.innerText += element + "\n"
-      });
+      this.base64Array.push(base64);
+      const res = fetch(LoginService.backAddress+"base64", {method: "POST", body: JSON.stringify({"lol":"lol"}), credentials: 'include'});
     };
     
-    inputPng1.addEventListener("change", (e) => {
-      uploadImage(e);
-    });
-    inputPng2.addEventListener("change", (e) => {
-      uploadImage(e);
-    });
-    inputPng3.addEventListener("change", (e) => {
-      uploadImage(e);
-    });
-    inputPng4.addEventListener("change", (e) => {
-      uploadImage(e);
-    });
+    
   }
+    getUserType() :void{
+      const res = fetch(LoginService.backAddress+"getUserType", {method: "GET", credentials: 'include'});
+      res.then(response => { return response.json(); }).then(x => {
+        this.usertype = x.userType
+      });
 
-  getUserType() :void{
-    const res = fetch(LoginService.backAddress+"getUserType", {method: "GET", credentials: 'include'});
+    
+    }
+
+
+    deletePost(id: Number) :void {
+      let data = {"id": id};
+      const res = fetch(LoginService.backAddress+"deletePost", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
+      res.then(response => { return response.json(); }).then(x => {
+        this.afterDeletePost(x);
+      });
+    }
+    afterDeletePost(s: JSON) :void{
+      if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
+      {
+        //usuniecie posta udane
+        this.getLessons()
+      }
+    }
+
+  getUserName() {
+    const res = fetch(LoginService.backAddress+"getUserName", {method: "GET", credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
-      this.usertype = x.userType
+      this.username = x.userName
     });
-
   }
 
-  createLesson() :void {
+
+    getLessons() {
+      const res = fetch(LoginService.backAddress+"getLessons", {method: "GET", credentials: 'include'});
+      res.then(response => { return response.json(); }).then(x => {
+        this.lessons = x.data
+      });
+    }
+
+
+
+
+  createPost() :void {
     var category = document.getElementById("category") as HTMLInputElement
     var categoryValue = category?.value
     var data
 
   if(this.base64Array.length === 0)
   {
-    data = {"title": this.lessonsForm.value.title, "content": this.lessonsForm.value.text, "desc": this.lessonsForm.value.desc, "category": categoryValue}
+    data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "desc": this.postForm.value.desc, "category": categoryValue, "attachments": this.base64Array}
   }
   else
   {
-    data = {"title": this.lessonsForm.value.title, "content": this.lessonsForm.value.text, "desc": this.lessonsForm.value.desc, "category": categoryValue, attachments:[]}
+    data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "desc": this.postForm.value.desc, "category": categoryValue, "attachments": this.base64Array};
   }
     const res = fetch(LoginService.backAddress+"setLesson", {method: "POST", body: JSON.stringify(data), credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
-      this.afterCreateLesson(x);
+      this.afterCreatePost(x);
     });
   }
 
-  afterCreateLesson(s: JSON) :void{
+  afterCreatePost(s: JSON) :void{
     if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
     {
       this.getLessons()
@@ -142,23 +187,61 @@ export class LessonsFeedComponent  {
       //błąd przy dodawaniu posta
     }
   }
-
-    getLessons() {
-      const res = fetch(LoginService.backAddress+"getLessons", {method: "GET", credentials: 'include'});
-      res.then(response => { return response.json(); }).then(x => {
-        this.lessons = x.data
-      });
+  openModal() {
+    (<HTMLInputElement> document.getElementById('imgModal')).style.display = "block"
+   }
+   closeModal() {
+    (<HTMLInputElement> document.getElementById('imgModal')).style.display = "none";
+   }
+   plusSlides(n: number) {
+    this.showSlides(this.slideIndex += n);
+   }
+   currentSlide(n: number) {
+    this.showSlides(this.slideIndex = n);
+   }
+   
+   showSlides(n: any) {
+    let i;
+    const slides = document.getElementsByClassName("img-slides") as HTMLCollectionOf < HTMLElement > ;
+    const dots = document.getElementsByClassName("images") as HTMLCollectionOf < HTMLElement > ;
+    if (n > slides.length) {
+     this.slideIndex = 1
     }
-    
+    if (n < 1) {
+     this.slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+     slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[this.slideIndex - 1].style.display = "block";
+    if (dots && dots.length > 0) {
+     dots[this.slideIndex - 1].className += " active";
+    }
+   }
 
-  
-goToLesson(id: any){
-  this.lesson_ID=id;
-this.router.navigate(["lesson/"+this.lesson_ID])
+   goToCategory(id: any){
+    this.lessons_category=id;
+  this.router.navigate(["lessons-sorted/"+this.lessons_category])
+  }
+
+  goToLesson(id: any){
+    this.lesson_ID=id;
+  this.router.navigate(["lesson/"+this.lesson_ID])
+  }
+
 }
-goToCategory(id: any){
-  this.lessons_category=id;
-this.router.navigate(["lessons-sorted/"+this.lessons_category])
-}
+
+@Pipe({
+  name: 'safe'
+})
+export class SafePipe implements PipeTransform {
+
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 
 }

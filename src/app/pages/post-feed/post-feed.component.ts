@@ -58,12 +58,11 @@ export class PostFeedComponent implements OnInit{
     })
 
     
-    const inputPng1 = document.getElementById("selectAvatarPng1") as HTMLInputElement
-    const inputPng2 = document.getElementById("selectAvatarPng2") as HTMLInputElement
-    const inputPng3 = document.getElementById("selectAvatarPng3") as HTMLInputElement
-    const inputPng4 = document.getElementById("selectAvatarPng4") as HTMLInputElement
+    const inputPng11 = document.getElementById("selectAvatarPng1") as HTMLInputElement
+    const inputPng22 = document.getElementById("selectAvatarPng2") as HTMLInputElement
+    const inputPng33 = document.getElementById("selectAvatarPng3") as HTMLInputElement
+    const inputPng44 = document.getElementById("selectAvatarPng4") as HTMLInputElement
     const avatar = document.getElementById("avatar") as HTMLInputElement
-    const textArea = document.getElementById("textArea") as HTMLInputElement
     
     const convertBase64 = (file: Blob) => {
       return new Promise((resolve, reject) => {
@@ -84,20 +83,20 @@ export class PostFeedComponent implements OnInit{
       const file = event.target.files[0];
       const base64 = await convertBase64(file) as string
        avatar.src = base64;
-      textArea.innerText = base64;
       this.base64 = base64;
+      const res = fetch(LoginService.backAddress+"base64", {method: "POST", body: JSON.stringify({"lol":"lol"}), credentials: 'include'});
     };
     
-    inputPng1.addEventListener("change", (e) => {
+    inputPng11.addEventListener("change", (e) => {
       uploadImage(e);
     });
-    inputPng2.addEventListener("change", (e) => {
+    inputPng22.addEventListener("change", (e) => {
       uploadImage(e);
     });
-    inputPng3.addEventListener("change", (e) => {
+    inputPng33.addEventListener("change", (e) => {
       uploadImage(e);
     });
-    inputPng4.addEventListener("change", (e) => {
+    inputPng44.addEventListener("change", (e) => {
       uploadImage(e);
     });
   }
@@ -148,7 +147,7 @@ export class PostFeedComponent implements OnInit{
     var visibilityValue = visibility?.value
     var data
 
-  if(this.base64==="")
+  if(this.base64 === "")
   {
     data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue}
   }

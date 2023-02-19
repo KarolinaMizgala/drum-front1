@@ -23,6 +23,11 @@ export class AdminPanelComponent {
   public bannedUsers!: String[];
   public unverifiedPro!: String[];
 
+  proAmount = 0
+  usersAmount = 0
+  proUnverifiedAmount = 0
+  amateursAmount = 0
+
 
 
   constructor( private router:Router, private http: HttpClient, private service:LoginService) {}
@@ -32,6 +37,7 @@ export class AdminPanelComponent {
       this.getUsers()
       this.getBannedUsers()
       this.getUnverifiedPro()
+      this.getUsersAmounts()
   }
 
 
@@ -131,5 +137,36 @@ export class AdminPanelComponent {
     res.then(response => { return response.json(); }).then(x => {
       this.username = x.userName
     });
+  }
+
+  getProAmount():void{
+    const res = fetch(LoginService.backAddress+"getProAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.proAmount = x.amount
+    });
+  }
+  getUsersAmount():void{
+    const res = fetch(LoginService.backAddress+"getUsersAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.usersAmount = x.amount
+    });
+  }
+  getProUnverifiedAmount():void{
+    const res = fetch(LoginService.backAddress+"getProUnverifiedAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.proUnverifiedAmount = x.amount
+    });
+  }
+  getAmateursAmount():void{
+    const res = fetch(LoginService.backAddress+"getAmateursAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.amateursAmount = x.amount
+    });
+  }
+  getUsersAmounts():void{
+    this.getProAmount()
+    this.getAmateursAmount()
+    this.getUsersAmount()
+    this.getProUnverifiedAmount()
   }
 }
