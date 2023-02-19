@@ -39,7 +39,7 @@ type="email" placeholder="Email" class="input" formControlName="email" />
 
 
             <div class="field">
-              <label for="" class="label">3VuZvhzdaaqW(vDC</label>
+              <label for="" class="label">Hasło</label>
               <div class="control has-icons-left">
                 <input formControlName="password1" type="password" placeholder="*******" class="input" required>
                 <span class="icon is-small is-left">
@@ -79,7 +79,7 @@ type="email" placeholder="Email" class="input" formControlName="email" />
               </label>
               
             </div>
-            <div *ngIf="signupForm.get('accType')!.value !== 'profi' && signupForm.get('accType')!.value !== 'amateur'">
+            <div *ngIf="signupForm.get('accType')!.value !== 'pro' && signupForm.get('accType')!.value !== 'amateur'">
               Typ konta jest wymagany
             </div>
             

@@ -1,13 +1,13 @@
-.card-body {
+.post-feed .card-body {
 	padding: 20px 20px 20px 20px;
   }
-  .label{
+  .post-feed .label{
     font-size: 40px;
   }
-  .input{
+  .post-feed .input{
     text-align: top;
   }
-  .section {
+  .post-feed.section {
     padding-right: 200px;
     padding-top: 0px;
     z-index: 2;
@@ -15,11 +15,11 @@
     margin-bottom: 40px;
   }
 
-  img{
+  .post-feed img{
 
 margin-top: 60px;
 }
-.write-post-container
+.post-feed .write-post-container
 {
   width: 100%;
   background-color: white;
@@ -27,12 +27,12 @@ margin-top: 60px;
   padding: 20px;
   columns: #626262;
 }
-.user-profile{
+.post-feed .user-profile{
 display: flex;
 align-items: center;
 
 }
-.user-profile .icon-profile{
+.post-feed .user-profile .icon-profile{
 
 
   height: 45px;
@@ -44,7 +44,7 @@ align-items: center;
   border-radius: 50%;
   color: #fff;
 }
-.user-profile p{
+.post-feed .user-profile p{
   
 padding-left: 10px;
   margin-bottom: -5px;
@@ -52,19 +52,19 @@ padding-left: 10px;
   color: #626262;
   font-size: 20px;
 }
-.user-profile small{
+.post-feed .user-profile small{
   
   padding-left: 10px;
     font-size: 16px;
     color: #626262;
   }
-.post-input-container
+  .post-feed .post-input-container
 {
   padding-left: 55px;
   padding-top: 20px;
  
 }
-.post-input-container textarea{
+.post-feed .post-input-container textarea{
   width: 100%;
   border: 0;
   outline: 0;
@@ -74,12 +74,12 @@ padding-left: 10px;
   text-align: inherit;
 
 }
-.add-post-links{
+.post-feed .add-post-links{
   display: flex;
   margin-top: 10px;
   align-items: center;
 }
-.post-input-container .add-post-links {
+.post-feed .post-input-container .add-post-links {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -88,7 +88,7 @@ padding-left: 10px;
   font-size: 13px;
 
 }
- .file-label input
+.post-feed .file-label input
 {
   outline: none;
   border-color: inherit;
@@ -96,7 +96,7 @@ padding-left: 10px;
   box-shadow: none;
 
 }
-.add-post-links a {
+.post-feed .add-post-links a {
   text-decoration: none;
   display: flex;
   align-items:stretch;
@@ -106,7 +106,7 @@ padding-left: 10px;
 
 }
 
-.add-post-links button{
+.post-feed .add-post-links button{
   text-decoration: none;
   display: flex;
  
@@ -114,7 +114,7 @@ padding-left: 10px;
   font-size: 13px;
 
 }
-select{
+.post-feed select{
   outline: none;
   border-color: white;
   background-color: var(--select-arrow);
@@ -123,7 +123,7 @@ select{
   color: #626262;
   
 }
-.post-container{
+.post-feed .post-container{
   width: 100%;
   background: #fff;
   border-radius: 6px;
@@ -131,27 +131,27 @@ select{
   color: #626262;
   margin: 20px 0;
 }
-.post-container span{
+.post-feed .post-container span{
   font-size: 13px;
   color: #9a9a9a;
 margin-bottom: 10px;
 }
-.post-container h1{
+.post-feed .post-container h1{
   font-size: 24px;
   color: #626262;
 
 }
-.post-text{
+.post-feed .post-text{
   font-size: 16px;
   color: #626262;
   margin: 15px 0;
 
 }
-iframe
+.post-feed iframe
 {
   margin-top: 5px;
 }
-.hero{
+.post-feed .hero{
   background-color: rgb(37, 37, 57, 0.70);
   background-image: url("src/assets/1.png");
 
