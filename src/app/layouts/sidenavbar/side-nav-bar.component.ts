@@ -36,7 +36,7 @@ export class SideNavBarComponent implements OnInit {
 
   afterLogout(x:JSON)
   {
-    this.service.loggedState = this.logged
+    this.service.loggedState = false
     this.router.navigate(['login'])
   }
 
