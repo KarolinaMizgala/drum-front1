@@ -12,8 +12,10 @@
   margin-top: 40px;
 }
 label{
-    color: #626262;
-}
+      font-weight: 300;
+      font-size: 16px;
+      color: #626262;
+    }
 .box{
     height: 300px;
     justify-content: center;
@@ -30,7 +32,6 @@ label{
     display: block;
     margin-right: auto;
     margin-left: auto;
-
-
-
+color: white;
+    background-color: #be68d4;
   }
