@@ -37,6 +37,9 @@ export class AccountComponent {
     );
     this.getUserName()
     this.getUserType()
+
+    if(!LoginService.loggedState)
+    this.router.navigate(["/login"])
   }
 
 

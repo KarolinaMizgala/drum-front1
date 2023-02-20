@@ -24,8 +24,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FormsModule } from '@angular/forms';
+import { SecondLessonsFeedComponent } from './pages/second-lessons-feed/second-lessons-feed.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
-import { LessonsFeedComponent } from './pages/lessons-feed/lessons-feed.component';
 import { LessonsSortedComponent } from './pages/lessons-sorted/lessons-sorted.component';
 import { AccountComponent } from './pages/account/account.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
@@ -45,7 +45,7 @@ import { LickComponent } from './pages/lick/lick.component';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    LessonsFeedComponent,
+    SecondLessonsFeedComponent,
     LessonComponent,
     LessonsSortedComponent,
     AccountComponent,
