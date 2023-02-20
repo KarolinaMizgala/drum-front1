@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.logged = this.service.loggedState
+    this.logged = LoginService.loggedState
+
     if(this.logged)
     {
     this.getUserName();
@@ -39,7 +40,7 @@ export class HeaderComponent implements OnInit {
   getUserName() {
     const res = fetch(LoginService.backAddress+"getUserName", {method: "GET", credentials: 'include'});
     res.then(response => { return response.json(); }).then(x => {
-      document.getElementById("getUserNameOutput")!.innerHTML = x.userName
+      //document.getElementById("getUserNameOutput")!.innerHTML = x.userName
       this.username = x.userName
     });
   }

@@ -6,10 +6,14 @@
   <div class="navbar-end">
     <div class="navbar-item">
       <div class="buttons">
+
+
         <a  *ngIf="!logged" class="button is-primary" routerLink="/signup" >
           <strong>Zarejestruj się</strong>
         </a>
         <a   *ngIf="!logged" class="button is-light" routerLink="/login">
+
+
           Zaloguj się
         </a>
         <div *ngIf="logged" class="user">

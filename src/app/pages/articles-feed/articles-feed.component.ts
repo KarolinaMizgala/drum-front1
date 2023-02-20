@@ -28,7 +28,7 @@ export class ArticlesFeedComponent  {
   
   constructor(private formBuilder : FormBuilder, private http: HttpClient, private router:Router, private service: LoginService) {}
   ngOnInit(): void {
-    this.logged = this.service.loggedState
+    this.logged = LoginService.loggedState
     this.getUserType()
     this.getArticles()
     this.articlesForm = this.formBuilder.group({

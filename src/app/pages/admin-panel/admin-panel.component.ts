@@ -18,10 +18,18 @@ export class AdminPanelComponent {
   usertype = "guest"
   empty = ""
   adminString = "admin"
+  proString = "pro"
+  proUnverifiedString = "proUnverified"
+  amateurString = "amateur"
 
-  public users!: String[];
-  public bannedUsers!: String[];
-  public unverifiedPro!: String[];
+  public users!: any;
+  public bannedUsers!: any;
+  public unverifiedPro!: any;
+
+  proAmount = 0
+  usersAmount = 0
+  proUnverifiedAmount = 0
+  amateursAmount = 0
 
 
 
@@ -29,9 +37,13 @@ export class AdminPanelComponent {
 
   ngOnInit(): void {
     this.getUserName()
-      this.getUsers()
-      this.getBannedUsers()
-      this.getUnverifiedPro()
+
+      this.getUsersAmounts()
+      this.getUsersLists()
+
+
+      if(!LoginService.loggedState)
+      this.router.navigate(["/login"])
   }
 
 
@@ -76,7 +88,8 @@ export class AdminPanelComponent {
     afterVerifyPro(s: JSON) :void{
       if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
       {
-        this.getUnverifiedPro()
+        this.getUsersLists()
+        this.getUsersAmounts()
       }
     }
 
@@ -90,7 +103,8 @@ export class AdminPanelComponent {
     afterMakeAdmin(s: JSON) :void{
       if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
       {
-        //zmiana typu konta na admin udana
+        this.getUsersLists()
+        this.getUsersAmounts()
       }
     }
 
@@ -105,8 +119,8 @@ export class AdminPanelComponent {
     afterBanUser(s: JSON) :void{
       if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
       {
-        this.getUsers()
-        this.getBannedUsers()
+        this.getUsersLists()
+        this.getUsersAmounts()
       }
     }
 
@@ -120,9 +134,8 @@ export class AdminPanelComponent {
     afterUnbanUser(s: JSON) :void{
       if(JSON.stringify(s) === JSON.stringify({"status": "OK"}))
       {
-        //odbanowanie użytkownika udane
-        this.getBannedUsers()
-        this.getUsers()
+        this.getUsersLists()
+        this.getUsersAmounts()
       }
     }
     
@@ -131,5 +144,41 @@ export class AdminPanelComponent {
     res.then(response => { return response.json(); }).then(x => {
       this.username = x.userName
     });
+  }
+
+  getProAmount():void{
+    const res = fetch(LoginService.backAddress+"getProAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.proAmount = x.amount
+    });
+  }
+  getUsersAmount():void{
+    const res = fetch(LoginService.backAddress+"getUsersAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.usersAmount = x.amount
+    });
+  }
+  getProUnverifiedAmount():void{
+    const res = fetch(LoginService.backAddress+"getProUnverifiedAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.proUnverifiedAmount = x.amount
+    });
+  }
+  getAmateursAmount():void{
+    const res = fetch(LoginService.backAddress+"getAmateursAmount", {method: "GET", credentials: 'include'});
+    res.then(response => { return response.json(); }).then(x => {
+      this.amateursAmount = x.amount
+    });
+  }
+  getUsersAmounts():void{
+    this.getProAmount()
+    this.getAmateursAmount()
+    this.getUsersAmount()
+    this.getProUnverifiedAmount()
+  }
+  getUsersLists():void{
+    this.getUsers()
+    this.getBannedUsers()
+    this.getUnverifiedPro()
   }
 }
