@@ -3,7 +3,7 @@
         <div class="container has-text-centered" *ngIf="[lesson_ID]==lesson.id">
        <div class="category">LEKCJE<span class="dot"> · </span>{{lesson.category}}</div>
             <div class="title">{{lesson.title}}</div>
-        <div class="subtitle">{{lesson.content}}</div>
+        <div class="subtitle">{{lesson.brief}}</div>
         <div class="author">Autor:&nbsp; {{lesson.author}}</div>
         <div class="date">Upublikowano:&nbsp; {{lesson.date|date:  "dd MMMM y"}}</div>
 
@@ -17,9 +17,9 @@
                 <div class="card has-text-centered" *ngFor="let lesson of lessons">
 
                     <div class="card-body " *ngIf="[lesson_ID]==lesson.id">
-                        
+                        <p>{{lesson.content}}</p>  
                              <img *ngFor="let attachment of lesson.attachments" class="center" src="https://i.guim.co.uk/img/media/13223421bfc4bd1c8cee8945a6fc446adc3e83da/0_193_2879_1727/master/2879.jpg?width=620&quality=45&dpr=2&s=none">
-                       <p>sadsadasdsadasdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+
                        
                             </div>
                     </div>
