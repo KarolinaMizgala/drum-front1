@@ -32,3 +32,44 @@
   cursor: pointer;
 
 }
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.user i {
+  height: 45px;
+  width: 45px;
+  background-color: #be68d4;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 1rem;
+  font-size: 20px;
+  font-weight: 100;
+  opacity: 100;
+
+}
+
+.user small {
+  font-size: 11px;
+  display:block;
+  color: #626262;
+
+}
+
+.user p {
+  font-size: 16px;
+  display:block;
+  color: #626262;
+  font-weight: 400;
+
+}
+.user .user-name{
+  display: block;
+  
+}

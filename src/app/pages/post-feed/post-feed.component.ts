@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { Pipe, PipeTransform } from '@angular/core';
-    import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 interface Post {  
   id: Number;  
@@ -29,8 +29,13 @@ export class PostFeedComponent implements OnInit{
   empty = ""
   slideIndex = 0;
 
+  inputFile: any
+  infoArea: any
+
   base64 = ""
   backAddress = ""
+
+  myFilename = ""
 
   public posts!: Post[];
   public postForm !: FormGroup;
@@ -42,7 +47,7 @@ export class PostFeedComponent implements OnInit{
   ngOnInit(): void {
 
     this.backAddress = LoginService.backAddress
-    this.logged = this.service.loggedState
+    this.logged = LoginService.loggedState
     this.getPosts();
     if(this.logged)
     {
@@ -58,12 +63,11 @@ export class PostFeedComponent implements OnInit{
     })
 
     
-    const inputPng1 = document.getElementById("selectAvatarPng1") as HTMLInputElement
-    const inputPng2 = document.getElementById("selectAvatarPng2") as HTMLInputElement
-    const inputPng3 = document.getElementById("selectAvatarPng3") as HTMLInputElement
-    const inputPng4 = document.getElementById("selectAvatarPng4") as HTMLInputElement
-    const avatar = document.getElementById("avatar") as HTMLInputElement
-    const textArea = document.getElementById("textArea") as HTMLInputElement
+    var input1 = document.getElementById("Png1") as HTMLInputElement
+    var input2 = document.getElementById("Png2") as HTMLInputElement
+    var input3 = document.getElementById("Png3") as HTMLInputElement
+    var input4 = document.getElementById("Png4") as HTMLInputElement
+    //const avatar = document.getElementById("avatar") as HTMLInputElement
     
     const convertBase64 = (file: Blob) => {
       return new Promise((resolve, reject) => {
@@ -81,25 +85,29 @@ export class PostFeedComponent implements OnInit{
     };
     
     const uploadImage = async (event: any) => {
+      const res = fetch(LoginService.backAddress+"base64", {method: "POST", body: JSON.stringify({"lol":"lol"}), credentials: 'include'});
       const file = event.target.files[0];
       const base64 = await convertBase64(file) as string
-       avatar.src = base64;
-      textArea.innerText = base64;
+       //avatar.src = base64;
       this.base64 = base64;
+      this.myFilename = file.name
+       
     };
     
-    inputPng1.addEventListener("change", (e) => {
+    input1.addEventListener("change", (e) => {
       uploadImage(e);
     });
-    inputPng2.addEventListener("change", (e) => {
+    input2.addEventListener("change", (e) => {
       uploadImage(e);
     });
-    inputPng3.addEventListener("change", (e) => {
+    input3.addEventListener("change", (e) => {
       uploadImage(e);
     });
-    inputPng4.addEventListener("change", (e) => {
+    input4.addEventListener("change", (e) => {
       uploadImage(e);
     });
+
+     
   }
     getUserType() :void{
       const res = fetch(LoginService.backAddress+"getUserType", {method: "GET", credentials: 'include'});
@@ -148,7 +156,7 @@ export class PostFeedComponent implements OnInit{
     var visibilityValue = visibility?.value
     var data
 
-  if(this.base64==="")
+  if(this.base64 === "")
   {
     data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "visible": visibilityValue}
   }
@@ -174,40 +182,6 @@ export class PostFeedComponent implements OnInit{
       //błąd przy dodawaniu posta
     }
   }
-  openModal() {
-    (<HTMLInputElement> document.getElementById('imgModal')).style.display = "block"
-   }
-   closeModal() {
-    (<HTMLInputElement> document.getElementById('imgModal')).style.display = "none";
-   }
-   plusSlides(n: number) {
-    this.showSlides(this.slideIndex += n);
-   }
-   currentSlide(n: number) {
-    this.showSlides(this.slideIndex = n);
-   }
-   
-   showSlides(n: any) {
-    let i;
-    const slides = document.getElementsByClassName("img-slides") as HTMLCollectionOf < HTMLElement > ;
-    const dots = document.getElementsByClassName("images") as HTMLCollectionOf < HTMLElement > ;
-    if (n > slides.length) {
-     this.slideIndex = 1
-    }
-    if (n < 1) {
-     this.slideIndex = slides.length
-    }
-    for (i = 0; i < slides.length; i++) {
-     slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-     dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[this.slideIndex - 1].style.display = "block";
-    if (dots && dots.length > 0) {
-     dots[this.slideIndex - 1].className += " active";
-    }
-   }
 
 }
 

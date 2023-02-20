@@ -11,13 +11,14 @@ export class SideNavBarComponent implements OnInit {
 
 
   logged = false
-  usertype = "admin"
+  usertype = "guest"
   adminString = "admin"
 
   constructor(@Inject(DOCUMENT) private document: Document, private router:Router,private service:LoginService) { }
 
   ngOnInit(): void {
-    this.logged = this.service.loggedState
+    this.logged = LoginService.loggedState
+    LoginService.getUserType()
     this.getUserType()
   }
 
@@ -36,7 +37,7 @@ export class SideNavBarComponent implements OnInit {
 
   afterLogout(x:JSON)
   {
-    this.service.loggedState = false
+    LoginService.loggedState = false
     this.router.navigate(['login'])
   }
 

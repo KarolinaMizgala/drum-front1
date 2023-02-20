@@ -55,8 +55,8 @@ export class SignupComponent {
     {
       //rejestracja udana
       this.logged = true
-      this.service.loggedState = this.logged
-      this.router.navigate(['post-feed'])
+      LoginService.loggedState = this.logged
+      this.router.navigate(['login'])
     }
     else
     {
