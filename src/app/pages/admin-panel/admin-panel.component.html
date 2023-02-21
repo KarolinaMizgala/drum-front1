@@ -54,7 +54,7 @@
             <td class="type">
               <p *ngIf = "user.type === proString" class="pro">Profesjonalista</p>
               <p *ngIf = "user.type === amateurString" class="ama">Amator</p>
-              <p *ngIf = "user.type === proUnverifiedString" class="unpro">Niezweryfikowany Profesjonalista</p>
+              <p *ngIf = "user.type === proUnverifiedString" class="unpro">Niezweryfikowany</p>
               <p *ngIf = "user.type === adminString" class="adm">Admin</p>
             </td>
             <td class="edit">
@@ -98,7 +98,7 @@
           </td>
 
           <td class="status">
-            <p class="unpro">Niezweryfikowany Profesjonalista</p>
+            <p class="unpro">Niezweryfikowany</p>
           </td>
           <td class="edit">
             <a class="button is-light" (click)="verifyPro(user.username)">
