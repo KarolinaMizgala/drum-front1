@@ -14,7 +14,7 @@
   <section class="section">
 
     <!--*ngIf="logged" -->
-    <div class="card">
+    <div *ngIf="logged" class="card">
       <form [formGroup]="postForm" (ngSubmit)="createPost()">
         <div class="write-post-container">
           <div class="user-profile">
