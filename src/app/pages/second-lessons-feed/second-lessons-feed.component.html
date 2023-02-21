@@ -54,14 +54,14 @@
         <ng-container class="column is-4"  *ngFor="let lesson of lessons">
           <div class="lesson-card">
             <div class="date">
-              <h3>{{lesson.date |date:  "dd" }}</h3>
-              <h4>{{lesson.date |date:  "MMMM" }}</h4>
+              <h3>{{ calculateDate(lesson.date) |date:  "dd" }}</h3>
+              <h4>{{ calculateDate(lesson.date) |date:  "MMMM" }}</h4>
             </div>
             <div class="lesson-img">
               <img src="{{backAddress}}lessonAttachment/{{lesson.attachments[0]}}" alt="P1">
             </div>
             <h2>{{lesson.title}}</h2>
-            <p>{{lesson.content}}</p>
+            <p>{{lesson.brief}}</p>
             <a  (click)="goToLesson(lesson.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
           </div>
             <!-- ------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -106,13 +106,24 @@
 <section class="lesson">
   <div class="title">Ostatnio dodane lekcje</div>
   <section class="lesson">
-  <div class="container has-text-centered" >
-    <div class="columns  is-multiline">
-      <ng-container class="column is-4"  *ngFor="let lesson of lessons">
-        <div class="lesson-card">
-          <div class="date">
-            <h3>{{lesson.date |date:  "dd" }}</h3>
-            <h4>{{lesson.date |date:  "MMMM" }}</h4>
+
+    <div class="title">Wszystkie lekcje</div>
+    <section class="lesson">
+    <div class="container has-text-centered">
+      <div class="columns is-multiline" ">
+        <ng-container class="column is-4"  *ngFor="let lesson of lessons">
+          <div class="lesson-card">
+            <div class="date">
+              <h3>{{ calculateDate(lesson.date) |date:  "dd" }}</h3>
+              <h4>{{ calculateDate(lesson.date) |date:  "MMMM" }}</h4>
+            </div>
+            <div class="lesson-img">
+              <img src="{{backAddress}}lessonAttachment/{{lesson.attachments[0]}}" alt="P1">
+            </div>
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.brief}}</p>
+            <a  (click)="goToLesson(lesson.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
+
           </div>
           <div class="lesson-img">
             <img src="{{backAddress}}lessonAttachment/{{lesson.attachments[0]}}" alt="P1">
@@ -121,48 +132,7 @@
           <p>{{lesson.content}}</p>
           <a  (click)="goToLesson(lesson.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
         </div>
-          <!-- ------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-  <div class="lesson-card">
-    <div class="date">
-      <h3>{{lesson.date |date:  "dd" }}</h3>
-      <h4>{{lesson.date |date:  "MMMM" }}</h4>
-    </div>
-    <div class="lesson-img">
-      <img src="{{backAddress}}lessonAttachment/{{lesson.attachments[0]}}" alt="P1">
-    </div>
-    <h2>{{lesson.title}}</h2>
-    <p>{{lesson.content}}</p>
-    <a  (click)="goToLesson(lesson.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
-  </div>
-  <div class="lesson-card">
-    <div class="date">
-      <h3>{{lesson.date |date:  "dd" }}</h3>
-      <h4>{{lesson.date |date:  "MMMM" }}</h4>
-    </div>
-    <div class="lesson-img">
-      <img src="{{backAddress}}lessonAttachment/{{lesson.attachments[0]}}" alt="P1">
-    </div>
-    <h2>{{lesson.title}}</h2>
-    <p>{{lesson.content}}</p>
-    <a  (click)="goToLesson(lesson.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
-  </div>
-  <div class="lesson-card">
-    <div class="date">
-      <h3>{{lesson.date |date:  "dd" }}</h3>
-      <h4>{{lesson.date |date:  "MMMM" }}</h4>
-    </div>
-    <div class="lesson-img">
-      <img src="{{backAddress}}lessonAttachment/{{lesson.attachments[0]}}" alt="P1">
-    </div>
-    <h2>{{lesson.title}}</h2>
-    <p>{{lesson.content}}</p>
-    <a  (click)="goToLesson(lesson.id)" class="read-more">Zobacz więcej<i class="fa fa-caret-right"></i> </a>
-  </div>
-
-
-
-<!-- ------------------------------------------------------------------------------------------------------------------------------------------- -->
       </ng-container>
       
     </div>
@@ -209,7 +179,7 @@
           <div class="add-post-links">
             <div class="file">
               <label class="file-label">
-                <input class="file-input"  id="Png1" type="file" name="resume" accept=".png">
+                <input class="file-input"  id="Png1" type="file" name="resume" (click) = "fakeAdd(1)" accept=".png">
                 <div class="add-post-links">
                   <a> <span class="file-icon">
                       <i class="uil uil-images fa-lg"></i>
@@ -227,7 +197,7 @@
             </div>
             <div class="file">
               <label class="file-label">
-                <input class="file-input" type="file" name="resume" id="Png2" accept=".mp3">
+                <input class="file-input" type="file" name="resume" id="Png2" (click) = "fakeAdd(2)" accept=".mp3">
                 <div class="add-post-links">
                   <a> <span class="file-icon">
                       <i class="uil uil-music fa-lg"></i>
@@ -243,7 +213,7 @@
             </div>
             <div class="file">
               <label class="file-label">
-                <input class="file-input" type="file" id="Png3" name="resume" accept=".mp4">
+                <input class="file-input" type="file" id="Png3" name="resume" (click) = "fakeAdd(3)" accept=".mp4">
                 <div class="add-post-links">
                   <a> <span class="file-icon">
                       <i class="uil uil-video fa-lg"></i>
@@ -259,7 +229,7 @@
             </div>
             <div class="file">
               <label class="file-label">
-                <input style="border:none" class="file-input" id="Png4" type="file" name="resume" accept=".pdf" />
+                <input style="border:none" class="file-input" id="Png4" type="file" name="resume" (click) = "fakeAdd(4)" accept=".pdf" />
                 <div class="add-post-links">
                   <a> <span class="file-icon">
                       <i class="uil uil-file-upload-alt fa-lg"></i>
@@ -273,13 +243,19 @@
               </label>
 
             </div>
-            <button type="submit" class="button is-primary">Dodaj</button>
-            <!--<div *ngIf="base64Array.length>0" class="file">Załączniki: </div>-->
-            
+            <button type="submit" class="button is-primary">Dodaj</button> 
           </div>
-        </div>
+          <ul class="selected-files" *ngIf="base64Array.length>0">
+            Załączniki: 
+            <li *ngFor="let fileName of fileNames">
+              <span class = "file">{{fileName}}</span>
+            </li>
+            <span class = "file">
+              <button class="button is-primary" (click)="clearFiles()">Usuń załączniki</button>
+            </span>
+          </ul>
 
       </div>
-
+    </div>
     </form>
   </div>
