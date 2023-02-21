@@ -32,6 +32,7 @@ export class SecondLessonsFeedComponent implements OnInit{
 
   base64 = ""
   base64Array: string[] = []
+  arrayEmpty = true
   backAddress = ""
 
   private lesson_ID: any;
@@ -75,6 +76,7 @@ export class SecondLessonsFeedComponent implements OnInit{
        //avatar.src = base64;
       //this.base64 = base64;
       this.base64Array.push(base64)
+      this.arrayEmpty = false
        
     };
     
@@ -149,7 +151,7 @@ export class SecondLessonsFeedComponent implements OnInit{
       var categoryValue = category?.value
       var data
   
-    if(this.base64 === "")
+    if(this.base64Array.length === 0)
     {
       data = {"title": this.postForm.value.title, "content": this.postForm.value.text, "brief": this.postForm.value.desc, "category": categoryValue}
     }

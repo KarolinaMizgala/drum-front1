@@ -12,7 +12,7 @@ interface Post {
   title: String;  
   content: String;  
   author: String;  
-  date: Date;
+  date: number;
   attachment: String;
 }  
  
@@ -46,6 +46,8 @@ export class PostFeedComponent implements OnInit{
 
   ngOnInit(): void {
 
+
+    this.myDate = new Date(1676847813000)
     this.backAddress = LoginService.backAddress
     this.logged = LoginService.loggedState
     this.getPosts();
@@ -145,8 +147,14 @@ export class PostFeedComponent implements OnInit{
     this.http.get<any>(LoginService.backAddress+"getPosts").subscribe(response=>{
       console.log(response);
       this.posts = response.data;
+      
     })
     };
+
+    calculateDate(date: number) : Date{
+      const d = new Date(date * 1000)
+      return d
+    }
 
 
 
