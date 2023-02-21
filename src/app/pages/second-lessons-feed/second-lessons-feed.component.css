@@ -1,6 +1,7 @@
 #main
 {
-    padding-right: 0;
+  margin: 90px 30px 20px 100px;
+ padding-right: 60px;
 }
  .tiles{
 padding-left: 20px;
@@ -8,26 +9,39 @@ padding-right: 20px;
 padding-top: 20px;
 justify-items: center;
 }
+
 .column .is-4
 {
     width: 30%;
   padding: 1rem;
 }
 .columns {
-   float:left;
+justify-content:left
+
+  }
+  .title{
+    font-size: 24px;
+  font-weight: 500;
+  color: #626262;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
   }
 .subtitle
 {
     text-align: center;
-    color: #252537;
+    color: #626262;
     font-weight: 550;
 }
 .lesson{
-padding: 60px 0;
+padding-top: 30px ;
 padding-left: 20px;
 padding-right: 10px;
-
+padding-bottom: 20px;
 display:block;
+
+
   flex-wrap: wrap;
   overflow: hidden;
 }
@@ -41,7 +55,8 @@ display:block;
     top: 0px;
     height: 450px;
     width: 350px;
-    
+    margin: 10px 10px 10px 10px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
 }
 .date{
     position: absolute;
@@ -135,6 +150,13 @@ float: auto;
     padding: 60px 0;
 padding-left: 20px;
 padding-right: 10px;
+}
+.container{
+  display:flex;
+  align-items: center;
+  justify-content: left;
+padding-left: 20px;
+padding-right: 20px;
 }
 .write-lesson-container
 {
@@ -268,7 +290,7 @@ select{
 
   img{
 
-margin-top: 60px;
+margin-top: 10px;
 }
 .write-post-container
 {

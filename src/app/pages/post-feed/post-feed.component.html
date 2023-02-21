@@ -6,7 +6,7 @@
     <p>Sponsorowane</p>
     <img
       src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/save-on-glasses-optik-store-banner-design-template-074f98f201084d4230fe8f40be6f1719_screen.jpg?ts=1625644351">
-
+      <a class="button">Dodaj reklamę</a>
   </div>
   <div class="columns">
     <div class="column is-12">
@@ -118,30 +118,6 @@
 
 
 
-
-
-    <div *ngIf="logged" class="container">
-      <div class="row">
-        <div class="col">
-          <iframe id="avatar" type="application/octet-stream"></iframe>
-        </div>
-        <div class="col">
-          
-        </div>
-      </div>
-    </div>
-
-    <div *ngIf="logged" class="title">
-      <h2>Wszystkie Posty</h2>
-    </div>
-
-    <div *ngIf="!logged" class="title">
-      <h2>Publiczne Posty</h2>
-    </div>
-    <div *ngIf="!logged" class="title">
-      <h2>Zaloguj się, aby wyświetlić wszystkie posty.</h2>
-    </div>
-
   </section>
   <section class="section">
     <div class="columns">
@@ -158,9 +134,11 @@
             <span >
               {{ calculateDate(post.date)| date:'dd.MM.yyyy - HH:mm'}}
             </span>
+          <div class="buttons">
             <a *ngIf="post.author === username" class="button is-light" (click)="deletePost(post.id)">
               Usuń post
             </a>
+          </div>
           </div>
         </div>
 
