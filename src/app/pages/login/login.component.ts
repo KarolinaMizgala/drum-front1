@@ -39,7 +39,7 @@ export class LoginComponent {
     {
       //logowanie udane
       this.logged = true
-      this.service.loggedState = this.logged
+      LoginService.loggedState = this.logged
       this.router.navigate(['post-feed'])
     }
     if(JSON.stringify(s) === JSON.stringify({"status": "User not found"}))

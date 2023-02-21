@@ -111,9 +111,23 @@ padding: 2px 10px;
 display: inline-block;
 border-radius: 40px;
 counter-reset: #2b2b2b;
+ }
+.unpro{
+  background: #FFD3A7;
+padding: 2px 10px;
+display: inline-block;
+border-radius: 40px;
+counter-reset: #2b2b2b;
 }
  .ama{
   background: #FAD7F7;
+padding: 2px 10px;
+display: inline-block;
+border-radius: 40px;
+counter-reset: #2b2b2b;
+}
+.adm{
+  background: #78D0FB;
 padding: 2px 10px;
 display: inline-block;
 border-radius: 40px;

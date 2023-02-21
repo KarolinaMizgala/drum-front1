@@ -48,20 +48,22 @@
         <tbody *ngFor="let user of users" >
           <tr>
             <td class="users">
-              <p>{{user}}</p>
+              <p>{{user.username}}</p>
             </td>
 
             <td class="type">
-              <p class="pro">Profesjonalista</p>
-              <p class="ama">Amator</p>
+              <p *ngIf = "user.type === proString" class="pro">Profesjonalista</p>
+              <p *ngIf = "user.type === amateurString" class="ama">Amator</p>
+              <p *ngIf = "user.type === proUnverifiedString" class="unpro">Niezweryfikowany</p>
+              <p *ngIf = "user.type === adminString" class="adm">Admin</p>
             </td>
             <td class="edit">
-              <a *ngIf="username != user" class="button is-light" (click)="makeAdmin(user)">
+              <a *ngIf="username != user.username" class="button is-light" (click)="makeAdmin(user.username)">
                 Mianuj adminem
               </a>
             </td>
             <td class="ban">
-              <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
+              <a *ngIf="username != user.username" class="button is-light" (click)="banUser(user.username)">
                Zablokuj
               </a>
             </td>
@@ -92,19 +94,19 @@
       <tbody *ngFor="let user of unverifiedPro" >
         <tr>
           <td class="users">
-            <p>{{user}}</p>
+            <p>{{user.username}}</p>
           </td>
 
           <td class="status">
-            <p class="ama">Niezweryfikowany</p>
+            <p class="unpro">Niezweryfikowany</p>
           </td>
           <td class="edit">
-            <a class="button is-light" (click)="verifyPro(user)">
+            <a class="button is-light" (click)="verifyPro(user.username)">
               Zweryfikuj
             </a>
           </td>
           <td class="ban">
-            <a *ngIf="username != user" class="button is-light" (click)="banUser(user)">
+            <a *ngIf="username != user.username" class="button is-light" (click)="banUser(user.username)">
              Zablokuj
             </a>
           </td>
@@ -116,7 +118,7 @@
 </div>
 <div class="activity">
   <div class="title">
-    <i class="uil uil-user-check icon"></i>
+    <i class="uil uil-user-times icon"></i>
     <span class="text">Użytkownicy zablokowani</span>
   </div>
 </div>
@@ -134,14 +136,14 @@
     <tbody *ngFor="let user of bannedUsers" >
       <tr>
         <td class="users">
-          <p>{{user}}</p>
+          <p>{{user.username}}</p>
         </td>
 
         <td class="status">
           <p class="ama">Zablokowany</p>
         </td>
         <td class="ban">
-          <a class="button is-light" (click)="unbanUser(user)">
+          <a class="button is-light" (click)="unbanUser(user.username)">
             Odblokuj
           </a>
         </td>

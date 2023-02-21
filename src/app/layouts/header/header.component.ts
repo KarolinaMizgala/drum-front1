@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.logged = this.service.loggedState
+    this.logged = LoginService.loggedState
+
     if(this.logged)
     {
     this.getUserName();

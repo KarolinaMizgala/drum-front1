@@ -1,3 +1,5 @@
+<!-- 
+<main id="main" class="main">
 <section class="hero is-fullheight">
 
     <div class="hero-body">
@@ -5,11 +7,11 @@
       <div class="container">
 
         <div class="columns is-centered">
-          <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-            <div  routerLink="/post-feed" class="card-header-title">
+          <div class="column">
+            <div class="card-header-title">
 
               <span class="logo_name">
-                Moje konto
+              Ustawienia profilu
               </span>
             </div>
             <form [formGroup]="accountInfoForm" class="box">
@@ -82,3 +84,85 @@
       </div>
     </div>
   </section>
+</main>
+       -->
+
+<main id="main" class="main">
+
+  <div class="dash-content">
+
+
+    <div class="container">
+
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="title">
+            <span class="text">Szczegóły profilu</span>
+          </div>
+          <form [formGroup]="accountInfoForm" class="box">
+            <div class="field">
+              <label for="" class="label">Nazwa użytkownika</label>
+              <div class="control has-icons-left">
+                <input formControlName="oldPassword" value={{username}} class="input" readonly>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Email</label>
+              <div class="control has-icons-left">
+                <input formControlName="newPassword" value={{email}} class="input" readonly>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Typ konta</label>
+              <div class="control has-icons-left">
+                <input formControlName="newPassword" type="text" value={{usertype}} class="input" readonly>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+        <div class="column is-5-tablet is-3-desktop is-3-widescreen">
+          <div class="title">
+            <span class="text">Zmiana hasła</span>
+          </div>
+          <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()" class="box">
+            <div class="field">
+              <label for="" class="label">Podaj aktualne hasło</label>
+              <div class="control has-icons-left">
+                <input formControlName="oldPassword" type="password" placeholder="*******" class="input" required>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Podaj nowe hasło</label>
+              <div class="control has-icons-left">
+                <input formControlName="newPassword" type="password" placeholder="*******" class="input" required>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="button is-primary">
+                Zmień hasło
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

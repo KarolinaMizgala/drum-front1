@@ -6,14 +6,26 @@
   <div class="navbar-end">
     <div class="navbar-item">
       <div class="buttons">
-        <a class="button is-primary" routerLink="/signup">
+
+
+        <a  *ngIf="!logged" class="button is-primary" routerLink="/signup" >
           <strong>Zarejestruj się</strong>
         </a>
-        <a  class="button is-light" routerLink="/login">
+        <a   *ngIf="!logged" class="button is-light" routerLink="/login">
+
+
           Zaloguj się
         </a>
-        <p id="getUserNameOutput"  >
-          
+        <div *ngIf="logged" class="user">
+          <i class="uil uil-user"></i>
+          <div class="user-name">
+         <p id="getUserNameOutput" >Name</p>
+          <small>
+            Admin
+          </small>
+        </div>
+        
+        </div>
     </div>
   </div>
 </div>
