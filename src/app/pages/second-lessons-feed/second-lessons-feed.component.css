@@ -1,7 +1,7 @@
 #main
 {
-  margin: 90px 30px 20px 30px;
-  padding-right: 0px;
+  margin: 90px 30px 20px 100px;
+ padding-right: 60px;
 }
  .tiles{
 padding-left: 20px;
@@ -155,8 +155,8 @@ padding-right: 10px;
   display:flex;
   align-items: center;
   justify-content: left;
-
-padding-left: 8%;
+padding-left: 20px;
+padding-right: 20px;
 }
 .write-lesson-container
 {
